@@ -1,107 +1,112 @@
 ---
-import { getLangFromUrl, useTranslations } from "../../i18n/utils";
-import Profile from "../../layouts/Profile.astro";
+import { getLangFromUrl, useTranslations } from '../../i18n/utils';
+import Profile from '../../layouts/Profile.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const heroImage = "/img/colorado.webp";
+const heroImage = '/img/colorado.webp';
 
 export async function getStaticPaths() {
-  return ["en", "es"].map((lang) => {
+  return ['en', 'es'].map((lang) => {
     return { params: { lang } };
   });
 }
 ---
 
 <Profile
-  title={t("about.title")}
-  description={t("site.description")}
+  title={t('about.title')}
+  description={t('site.description')}
   heroImage={heroImage}
   lang={lang}
 >
   <div class="py-2">
     <p>
       <span class="fa fa-briefcase about-icon"></span>
-      {t("about.work.0")}
+      {t('about.work.0')}
     </p>
     <p>
-      {t("about.work.1")}
+      {t('about.work.1')}
     </p>
     <p>
-      {t("about.work.2")}
+      {t('about.work.2')}
     </p>
   </div>
-  
-  <div class="py-3">
+
+  <div class="py-2">
     <p>
       <span class="fa fa-graduation-cap about-icon"></span>
-      {t("about.education.0")}
+      {t('about.education.0')}
     </p>
     <p>
-      {t("about.education.1")}
+      {t('about.education.1')}
     </p>
     <p>
-      {t("about.education.2")}
+      {t('about.education.2')}
     </p>
     <p>
-      {t("about.education.3")}
+      {t('about.education.3')}
     </p>
   </div>
 
   <div class="py-2">
     <p>
       <span class="fa fa-code about-icon"></span>
-      {t("about.tech.0")}
+      {t('about.tech.0')}
     </p>
     <p>
-      {t("about.tech.1")}
+      {t('about.tech.1')}
     </p>
     <p>
-      {t("about.tech.2")}
+      {t('about.tech.2')}
     </p>
   </div>
 
   <div class="py-2">
     <p>
       <span class="fa fa-globe-americas about-icon"></span>
-      {t("about.world.0")}
+      {t('about.world.0')}
     </p>
     <p class="py-1">
-      {t("about.world.1")}
+      {t('about.world.1')}
     </p>
   </div>
 
   <div class="py-2">
     <p>
       <span class="fa fa-heart about-icon"></span>
-      {t("about.hobbies.0")}
+      {t('about.hobbies.0')}
     </p>
     <p>
-      {t("about.hobbies.1")}
+      {t('about.hobbies.1')}
     </p>
   </div>
 
   <div class="py-2">
     <p>
       <span class="fa fa-file-alt about-icon"></span>
-      {t("about.cv.0")}
-      <a class="no-underline" href="https://mlorente.dev/assets/cv/CV_ManuelLorenteAlman.pdf" target="_blank" rel="noopener"><b>{t("about.cv.1")}</b></a>
+      {t('about.cv.0')}
+      <a
+        class="no-underline"
+        href="https://mlorente.dev/cv/CV_ManuelLorenteAlman.pdf"
+        target="_blank"
+        rel="noopener"><b>{t('about.cv.1')}</b></a
+      >
     </p>
   </div>
 
   <div class="py-2">
     <p>
       <span class="fa fa-envelope about-icon"></span>
-      {t("about.contact.0")}
+      {t('about.contact.0')}
       <a class="no-underline" href="mailto:hello@mlorente.dev?subject=Hola!"><b>email</b></a>
-      {t("about.contact.1")}
+      {t('about.contact.1')}
       <a class="no-underline" href="https://twitter.com/mlorentedev"><b>Twitter.</b></a>
     </p>
   </div>
 
   <div class="py-2">
     <p class="text-center">
-      🌍{t("about.greetings.0")}🌍
+      🌍{t('about.greetings.0')}🌍
     </p>
   </div>
 </Profile>

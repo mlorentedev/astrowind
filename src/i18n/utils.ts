@@ -1,27 +1,24 @@
-import { ui } from "./ui";
+import { ui } from './ui';
 
 export const LANGUAGES = {
-  en: "English",
-  es: "Español",
+  en: 'English',
+  es: 'Español',
 };
 
 export const LANGUAGES_KEYS = Object.keys(LANGUAGES) as UiType[];
 
-export const DEFAULT_LANG = "en";
+export const DEFAULT_LANG = 'en';
 
 export type UiType = keyof typeof ui;
 
 export function getLangFromUrl(url: URL) {
-  const [, lang] = url.pathname.split("/");
+  const [, lang] = url.pathname.split('/');
   if (lang in ui) return lang as UiType;
   return DEFAULT_LANG;
 }
 
 export function useTranslations(lang?: UiType) {
-  return function t(
-    key: keyof (typeof ui)[typeof DEFAULT_LANG],
-    ...args: any[]
-  ) {
+  return function t(key: keyof (typeof ui)[typeof DEFAULT_LANG], ...args: any[]) {
     let translation = ui[lang ?? DEFAULT_LANG][key] || ui[DEFAULT_LANG][key];
     if (args.length > 0) {
       for (let i = 0; i < args.length; i++) {
@@ -33,7 +30,10 @@ export function useTranslations(lang?: UiType) {
 }
 
 export function pathNameIsInLanguage(pathname: string, lang: UiType) {
-  return pathname.startsWith(`/${lang}`) || (lang === DEFAULT_LANG && !pathNameStartsWithLanguage(pathname));
+  return (
+    pathname.startsWith(`/${lang}`) ||
+    (lang === DEFAULT_LANG && !pathNameStartsWithLanguage(pathname))
+  );
 }
 
 function pathNameStartsWithLanguage(pathname: string) {

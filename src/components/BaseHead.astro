@@ -2,40 +2,35 @@
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
 import {
-	LANGUAGES,
-	pathNameIsInLanguage,
-	DEFAULT_LANG,
-	getLocalizedPathname,
-	type UiType,
-} from "../i18n/utils";
+  LANGUAGES,
+  pathNameIsInLanguage,
+  DEFAULT_LANG,
+  getLocalizedPathname,
+  type UiType,
+} from '../i18n/utils';
 
-import "../styles/global.css";
+import '../styles/global.css';
 
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
-	lang?: string;
+  title: string;
+  description: string;
+  image?: string;
+  lang?: string;
 }
 
 const canonicalPathname = pathNameIsInLanguage(Astro.url.pathname, DEFAULT_LANG)
-	? Astro.url.pathname
-	: getLocalizedPathname(Astro.url.pathname, DEFAULT_LANG);
+  ? Astro.url.pathname
+  : getLocalizedPathname(Astro.url.pathname, DEFAULT_LANG);
 const canonicalURL = new URL(canonicalPathname, Astro.site);
 
-const {
-	lang,
-	title,
-	description,
-	image = "",
-} = Astro.props;
+const { lang, title, description, image = '' } = Astro.props;
 
 const alternateLang = Object.keys(LANGUAGES);
 const alternateLinks = alternateLang.map((_lang: UiType) => {
-	return {
-		href: new URL(getLocalizedPathname(Astro.url.pathname, _lang), Astro.site),
-		hreflang: _lang,
-	};
+  return {
+    href: new URL(getLocalizedPathname(Astro.url.pathname, _lang), Astro.site),
+    hreflang: _lang,
+  };
 });
 ---
 
@@ -48,31 +43,22 @@ const alternateLinks = alternateLang.map((_lang: UiType) => {
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- Font preloads -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+/>
 
-<link
-	rel="preload"
-	href="/fonts/Roboto-Regular.woff"
-	as="font"
-	type="font/woff"
-	crossorigin
-/>
-<link
-	rel="preload"
-	href="/fonts/Roboto-Bold.woff"
-	as="font"
-	type="font/woff"
-	crossorigin
-/>
+<link rel="preload" href="/fonts/Roboto-Regular.woff" as="font" type="font/woff" crossorigin />
+<link rel="preload" href="/fonts/Roboto-Bold.woff" as="font" type="font/woff" crossorigin />
 
 <!-- Canonical URL -->
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Alternate URLs -->
 {
-	alternateLinks.map(({ href, hreflang }) => (
-		<link rel="alternate" href={href} hreflang={hreflang} />
-	))
+  alternateLinks.map(({ href, hreflang }) => (
+    <link rel="alternate" href={href} hreflang={hreflang} />
+  ))
 }
 
 <!-- Primary Meta Tags -->

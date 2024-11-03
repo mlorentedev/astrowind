@@ -1,14 +1,13 @@
 ---
-import type { CollectionEntry } from "astro:content";
-import BaseHead from "../components/BaseHead.astro";
-import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import { useTranslations, type UiType } from "../i18n/utils";
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { useTranslations, type UiType } from '../i18n/utils';
 
-type Props = CollectionEntry<"blog">["data"];
+type Props = CollectionEntry<'blog'>['data'];
 
-const { title, description, lang } =
-  Astro.props;
+const { title, description, lang } = Astro.props;
 
 const t = useTranslations(lang as UiType);
 ---
@@ -19,10 +18,10 @@ const t = useTranslations(lang as UiType);
     <BaseHead lang={lang} title={title} description={description} />
   </head>
   <body class="flex flex-col min-h-screen">
-    <Header title={t("site.title")} lang={lang} />
-  <main class="flex-grow py-16">
-		<slot />
-	</main>
+    <Header title={t('site.title')} lang={lang} />
+    <main class="flex-grow py-16">
+      <slot />
+    </main>
     <Footer />
   </body>
 </html>

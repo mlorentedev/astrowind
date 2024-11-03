@@ -1,18 +1,21 @@
 ---
-import { getBlogPosts } from "../../../content/config";
-import FormattedDate from "../../../components/FormattedDate.astro";
-import Layout from "../../../layouts/Layout.astro";
-import { useTranslations } from "../../../i18n/utils";
+import { getBlogPosts } from '../../../content/config';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import Layout from '../../../layouts/Layout.astro';
+import { useTranslations } from '../../../i18n/utils';
 
 const { lang } = Astro.params;
 const t = useTranslations(lang);
 const today = new Date();
 
-export async function getStaticPaths({ paginate }: 
-  { paginate: (items: any[], options: { params: { lang: string }, pageSize: number }) => any }) {
+export async function getStaticPaths({
+  paginate,
+}: {
+  paginate: (items: any[], options: { params: { lang: string }; pageSize: number }) => any;
+}) {
   const PAGE_SIZE = 2;
   const _posts = await getBlogPosts();
-  return ["en", "es"].flatMap((lang) => {
+  return ['en', 'es'].flatMap((lang) => {
     const posts_filtered = _posts
       ?.filter((blog) => blog?.data?.lang === lang)
       .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
@@ -26,72 +29,104 @@ const { page } = Astro.props;
 <Layout title="Blog" description="Blog" lang={lang} pubDate={today}>
   <section id="posts-list" class="max-w-screen-lg mx-auto px-10">
     <ul class="flex flex-wrap gap-8 list-none p-0">
-      {page.data.map((post: { 
-        blog_slug: any; 
-        data: { 
-          heroImage: string | null | undefined;
-          description: string;
-          title: unknown; pubDate: Date; 
-        }; }) => (
+      {
+        page.data.map(
+          (post: {
+            blog_slug: any;
+            data: {
+              heroImage: string | null | undefined;
+              description: string;
+              title: unknown;
+              pubDate: Date;
+            };
+          }) => (
             <li class="w-full sm:w-auto">
               <a href={`/${lang}/blog/${post.blog_slug}`} class="block">
-                <h4 class={`text-gray-800 font-bold text-4xl mb-2 hover:text-teal-700 transition-colors duration-200`}>
+                <h4
+                  class={`text-gray-800 font-bold text-4xl mb-2 hover:text-teal-700 transition-colors duration-200`}
+                >
                   {post.data.title}
                 </h4>
               </a>
-                <p class="text-gray-600 italic text-base mb-2">
-                  <FormattedDate date={post.data.pubDate} />
-                </p>
-                <p>
-                  {post.data.description}
-                  <a href={`/${lang}/blog/${post.blog_slug}`} class="block font-semibold text-lg hover:text-teal-700 transition-colors duration-200">
-                    [{t("readmore")}]
-                  </a>
-                </p>
+              <p class="text-gray-600 italic text-base mb-2">
+                <FormattedDate date={post.data.pubDate} />
+              </p>
+              <p>
+                {post.data.description}
+                <a
+                  href={`/${lang}/blog/${post.blog_slug}`}
+                  class="block font-semibold text-lg hover:text-teal-700 transition-colors duration-200"
+                >
+                  [{t('readmore')}]
+                </a>
+              </p>
             </li>
-          ))}
+          )
+        )
+      }
     </ul>
 
     <div class="pagination flex justify-center items-center mt-6 text-sm">
-      {page.url.first ? (
-        <a href={page.url.first} class="page-link bg-indigo-600 text-white px-3 py-1 rounded-md mx-1 hover:opacity-80">
-          {t("pagination.first")}
-        </a>
-      ) : (
-        <span class="disabled px-3 py-1 mx-1 bg-gray-200 text-gray-500 rounded-md cursor-not-allowed">
-          {t("pagination.first")}
-        </span>
-      )}
-      {page.url.prev ? (
-        <a href={page.url.prev} class="page-link bg-indigo-600 text-white px-3 py-1 rounded-md mx-1 hover:opacity-80">
-          {t("pagination.prev")}
-        </a>
-      ) : (
-        <span class="disabled px-3 py-1 mx-1 bg-gray-200 text-gray-500 rounded-md cursor-not-allowed">
-          {t("pagination.prev")}
-        </span>
-      )}
+      {
+        page.url.first ? (
+          <a
+            href={page.url.first}
+            class="page-link bg-indigo-600 text-white px-3 py-1 rounded-md mx-1 hover:opacity-80"
+          >
+            {t('pagination.first')}
+          </a>
+        ) : (
+          <span class="disabled px-3 py-1 mx-1 bg-gray-200 text-gray-500 rounded-md cursor-not-allowed">
+            {t('pagination.first')}
+          </span>
+        )
+      }
+      {
+        page.url.prev ? (
+          <a
+            href={page.url.prev}
+            class="page-link bg-indigo-600 text-white px-3 py-1 rounded-md mx-1 hover:opacity-80"
+          >
+            {t('pagination.prev')}
+          </a>
+        ) : (
+          <span class="disabled px-3 py-1 mx-1 bg-gray-200 text-gray-500 rounded-md cursor-not-allowed">
+            {t('pagination.prev')}
+          </span>
+        )
+      }
       <span class="current-page font-semibold text-gray-700 mx-2">
-        {t("page")} {page.currentPage}/{page.lastPage}
+        {t('page')}
+        {page.currentPage}/{page.lastPage}
       </span>
-      {page.url.next ? (
-        <a href={page.url.next} class="page-link bg-indigo-600 text-white px-3 py-1 rounded-md mx-1 hover:opacity-80">
-          {t("pagination.next")}
-        </a>
-      ) : (
-        <span class="disabled px-3 py-1 mx-1 bg-gray-200 text-gray-500 rounded-md cursor-not-allowed">
-          {t("pagination.next")}
-        </span>
-      )}
-      {page.url.last ? (
-        <a href={page.url.last} class="page-link bg-indigo-600 text-white px-3 py-1 rounded-md mx-1 hover:opacity-80">
-          {t("pagination.last")}
-        </a>
-      ) : (
-        <span class="disabled px-3 py-1 mx-1 bg-gray-200 text-gray-500 rounded-md cursor-not-allowed">
-          {t("pagination.last")}
-        </span>
-      )}
+      {
+        page.url.next ? (
+          <a
+            href={page.url.next}
+            class="page-link bg-indigo-600 text-white px-3 py-1 rounded-md mx-1 hover:opacity-80"
+          >
+            {t('pagination.next')}
+          </a>
+        ) : (
+          <span class="disabled px-3 py-1 mx-1 bg-gray-200 text-gray-500 rounded-md cursor-not-allowed">
+            {t('pagination.next')}
+          </span>
+        )
+      }
+      {
+        page.url.last ? (
+          <a
+            href={page.url.last}
+            class="page-link bg-indigo-600 text-white px-3 py-1 rounded-md mx-1 hover:opacity-80"
+          >
+            {t('pagination.last')}
+          </a>
+        ) : (
+          <span class="disabled px-3 py-1 mx-1 bg-gray-200 text-gray-500 rounded-md cursor-not-allowed">
+            {t('pagination.last')}
+          </span>
+        )
+      }
     </div>
   </section>
 </Layout>

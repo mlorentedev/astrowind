@@ -1,15 +1,10 @@
 ---
-import Landing from "../layouts/Landing.astro";
+import Landing from '../layouts/Landing.astro';
 
-import { getLangFromUrl, useTranslations } from "../i18n/utils";
+import { getLangFromUrl, useTranslations } from '../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<Landing
-  title={t("site.title")}
-  description={t("site.subtitle")}
-  lang={lang}
->
-</Landing>
+<Landing title={t('site.title')} description={t('site.subtitle')} lang={lang} />

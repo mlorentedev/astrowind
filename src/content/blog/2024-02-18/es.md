@@ -1,8 +1,7 @@
 ---
-title: "La Armonía entre DevOps y SRE"
-description: "En la acelerada cocina del desarrollo de software, surgen dos roles cruciales para asegurar una operación fluida: el chef y el asistente de cocina. En nuestro mundo tecnológico, estos roles están representados por DevOps y la Ingeniería de Confiabilidad del Sitio (SRE)."
+title: 'La Armonía entre DevOps y SRE'
+description: 'En la acelerada cocina del desarrollo de software, surgen dos roles cruciales para asegurar una operación fluida: el chef y el asistente de cocina. En nuestro mundo tecnológico, estos roles están representados por DevOps y la Ingeniería de Confiabilidad del Sitio (SRE).'
 pubDate: 2024-02-18
-heroImage: '/img/2024-02-18/waterfall-model.png'
 lang: 'es'
 ---
 
@@ -33,15 +32,15 @@ Echemos un vistazo más de cerca a algunas de las características definitorias 
   <img src="/img/2024-02-18/waterfall-model.png" alt="Modelo de Cascada">
 </div>
 
-#### Modelo de Cascada  
+#### Modelo de Cascada
 
 A la vanguardia de las metodologías de desarrollo de software estaba el modelo de Cascada, un enfoque lineal donde cada etapa debía completarse antes de pasar a la siguiente. Si bien parecía estructurado, este modelo dificultaba increíblemente la adaptación a cambios o la respuesta rápida a nuevos requisitos, dejando a los equipos sintiéndose como si estuvieran escalando una empinada cascada.
 
-#### Equipos Aislados  
+#### Equipos Aislados
 
 En esta era, los desarrolladores, testers y equipos de operaciones operaban en gran medida en aislamiento, fomentando una mentalidad de "tíralo por encima de la pared". Con una comunicación y colaboración mínimas, los equipos a menudo se señalaban entre sí cuando surgían problemas, lo que llevaba a un proceso de desarrollo fragmentado.
 
-#### Procesos Manuales  
+#### Procesos Manuales
 
 La mayoría de las tareas, desde las pruebas hasta la implementación, se realizaban manualmente. Esto no solo consumía un tiempo valioso, sino que también introducía numerosas oportunidades para errores, resultando en retrasos e inconsistencias.
 

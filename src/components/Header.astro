@@ -1,47 +1,65 @@
 ---
-import HeaderLink from "./HeaderLink.astro";
-import { TITLE } from "../consts";
-import LangLink from "./LangLink.astro";
-import { useTranslations, type UiType } from "../i18n/utils";
-import Avatar from "./Avatar.astro";
-import Dropdown from "./Dropdown.astro";
+import HeaderLink from './HeaderLink.astro';
+import { TITLE } from '../consts';
+import LangLink from './LangLink.astro';
+import { useTranslations, type UiType } from '../i18n/utils';
+import Avatar from './Avatar.astro';
+import Dropdown from './Dropdown.astro';
 
 const { lang } = Astro.props;
 
-const homeSlug = `/${lang || ""}`;
-const blogSlug = `/${lang || ""}/blog`;
-const aboutSlug = `/${lang || ""}/about`;
+const homeSlug = `/${lang || ''}`;
+const blogSlug = `/${lang || ''}/blog`;
+const aboutSlug = `/${lang || ''}/about`;
 
 const t = useTranslations(lang as UiType);
 
-const avatarSrc = "/img/me-2.webp";
-
+const avatarSrc = '/img/me-2.webp';
 ---
 
 <header class="bg-gray-100 text-gray-800 fixed w-full">
   <div class="border-2 px-4 py-2">
     <nav class="flex items-center justify-between text-gray-800">
       <h2 class="text-lg font-extrabold">
-        <a href={homeSlug} class= "no-underline hover:text-teal-700 transition-colors duration-200">{TITLE}</a>
+        <a href={homeSlug} class="no-underline hover:text-teal-700 transition-colors duration-200"
+          >{TITLE}</a
+        >
       </h2>
       <!-- Desktop Links -->
       <div class="hidden md:flex md:items-center md:space-x-2 ml-auto">
-        <HeaderLink href={homeSlug} class="hover:text-teal-700 transition-colors duration-200">{t("nav.home")}</HeaderLink>
-        <HeaderLink href={blogSlug} class="hover:text-teal-700 transition-colors duration-200">{t("nav.blog")}</HeaderLink>
-        <HeaderLink href={aboutSlug} class="hover:text-teal-700 transition-colors duration-200">{t("nav.about")}</HeaderLink>
+        <HeaderLink href={homeSlug} class="hover:text-teal-700 transition-colors duration-200"
+          >{t('nav.home')}</HeaderLink
+        >
+        <HeaderLink href={blogSlug} class="hover:text-teal-700 transition-colors duration-200"
+          >{t('nav.blog')}</HeaderLink
+        >
+        <HeaderLink href={aboutSlug} class="hover:text-teal-700 transition-colors duration-200"
+          >{t('nav.about')}</HeaderLink
+        >
         <span class="px-2">|</span>
         <div class="flex space-x-4">
-          <LangLink language="en" isActive={lang == "en"} class="hover:text-teal-700 transition-colors duration-200"/>
-          <LangLink language="es" isActive={lang == "es"} class="hover:text-teal-700 transition-colors duration-200"/>
+          <LangLink
+            language="en"
+            isActive={lang == 'en'}
+            class="hover:text-teal-700 transition-colors duration-200"
+          />
+          <LangLink
+            language="es"
+            isActive={lang == 'es'}
+            class="hover:text-teal-700 transition-colors duration-200"
+          />
         </div>
       </div>
-      <Avatar src={avatarSrc} link={homeSlug}/>
-      <button id="menu-toggle" class="md:hidden border-2 border-gray-400 bg-gray-100 px-2 py-1 rounded transition-colors duration-700">
+      <Avatar src={avatarSrc} link={homeSlug} />
+      <button
+        id="menu-toggle"
+        class="md:hidden border-2 border-gray-400 bg-gray-100 px-2 py-1 rounded transition-colors duration-700"
+      >
         &#9776;
       </button>
     </nav>
   </div>
-  <Dropdown lang={lang}/>
+  <Dropdown lang={lang} />
 </header>
 
 <script is:client>

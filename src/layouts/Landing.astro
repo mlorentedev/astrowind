@@ -1,20 +1,15 @@
 ---
-import Layout from "./Layout.astro";
+import Layout from './Layout.astro';
 
-const {title, description, lang } = Astro.props;
+const { title, description, lang } = Astro.props;
 const pubDate = new Date();
 ---
 
-<Layout
-  title={title}
-  description={description}
-  pubDate={pubDate}
-  lang={lang}
->
+<Layout title={title} description={description} pubDate={pubDate} lang={lang}>
   <article class="text-gray-800 max-w-3xl mx-auto p-4">
     <div class="mb-4 text-center">
       <h1 class="text-6xl font-extrabold">{title}</h1>
-      <h2 class=" text-4xl py-2">{description}</h2>
+      <h2 class="text-4xl py-2">{description}</h2>
     </div>
     <div class="prose lg:prose-xl mx-auto">
       <slot />

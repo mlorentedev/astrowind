@@ -7,7 +7,7 @@ This is mi minimal website [mlorente.dev](https://mlorente.dev).
 - ✅ Same features as Astro Starter Kit Blog
 - ✅ i18n integration with sitemap
 - ✅ multilingual SEO optimization with canonical (EN) and alternate links
-- ✅ multilingual configuration with EN  and ES
+- ✅ multilingual configuration with EN and ES
 
 ## 🚀 Project Structure
 

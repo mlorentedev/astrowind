@@ -1,13 +1,14 @@
 ---
-import { getBlogPosts } from "../../../content/config";
-import BlogPost from "../../../layouts/BlogPost.astro";
-import FormattedDate from "../../../components/FormattedDate.astro";
+import { getBlogPosts } from '../../../content/config';
+import BlogPost from '../../../layouts/BlogPost.astro';
+import FormattedDate from '../../../components/FormattedDate.astro';
+import { getReadingTime } from '../../../../utils/reading-time';
 
 export async function getStaticPaths() {
   const pages = await getBlogPosts();
 
   const paths = pages.map((page) => ({
-    params: { lang: page?.data.lang || "en", slug: page.blog_slug },
+    params: { lang: page?.data.lang || 'en', slug: page.blog_slug },
     props: page,
   }));
 
@@ -18,6 +19,9 @@ const { lang } = Astro.params;
 const page = Astro.props;
 
 const { Content } = await page.render();
+const readingTime = getReadingTime(page.body);
+
+const readingTimeMessage = lang === 'en' ? 'min read' : 'minutos de lectura';
 ---
 
 <BlogPost {...page.data} lang={lang}>
@@ -27,7 +31,7 @@ const { Content } = await page.render();
       <hr class="my-4 border-gray-300" />
     </div>
     <p class="text-gray-600 italic text-base mb-2">
-      <FormattedDate date={page.data.pubDate} />
+      <FormattedDate date={page.data.pubDate} /> • {readingTime} {readingTimeMessage}
     </p>
     <div class="prose prose-lg">
       <Content />
