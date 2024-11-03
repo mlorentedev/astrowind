@@ -1,0 +1,25 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { getLocalizedPathname } from "../i18n/utils";
+import { useTranslations, type UiType } from "../i18n/utils";
+
+type Props = HTMLAttributes<"a">;
+
+const { language, class: className, ...props } = Astro.props;
+const { pathname } = Astro.url;
+
+const lang = Astro.params?.lang || "en";
+const isActive = language === lang;
+
+const t = useTranslations(lang as UiType);
+
+const href = getLocalizedPathname(pathname, language);
+---
+
+<a
+  href={href}
+  class:list={[className, "inline-block no-underline", isActive ? "font-bold underline" : ""]}
+  {...props}
+>
+  {language}
+</a>

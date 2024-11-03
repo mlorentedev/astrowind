@@ -1,0 +1,36 @@
+---
+import { getBlogPosts } from "../../../content/config";
+import BlogPost from "../../../layouts/BlogPost.astro";
+import FormattedDate from "../../../components/FormattedDate.astro";
+
+export async function getStaticPaths() {
+  const pages = await getBlogPosts();
+
+  const paths = pages.map((page) => ({
+    params: { lang: page?.data.lang || "en", slug: page.blog_slug },
+    props: page,
+  }));
+
+  return paths;
+}
+
+const { lang } = Astro.params;
+const page = Astro.props;
+
+const { Content } = await page.render();
+---
+
+<BlogPost {...page.data} lang={lang}>
+  <article class="max-w-screen-md mx-auto p-4">
+    <div class="mb-4">
+      <h1 class="text-4xl font-extrabold text-gray-900">{page.data.title}</h1>
+      <hr class="my-4 border-gray-300" />
+    </div>
+    <p class="text-gray-600 italic text-base mb-2">
+      <FormattedDate date={page.data.pubDate} />
+    </p>
+    <div class="prose prose-lg">
+      <Content />
+    </div>
+  </article>
+</BlogPost>
