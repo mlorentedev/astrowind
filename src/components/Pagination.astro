@@ -1,0 +1,24 @@
+---
+import PaginationButton from './PaginationButton.astro';
+
+const { page, t } = Astro.props;
+---
+
+<div class="pagination flex justify-center items-center mt-6 text-sm">
+  <PaginationButton
+    href={page.url.first}
+    label={t('pagination.first')}
+    isDisabled={!page.url.first}
+  />
+
+  <PaginationButton href={page.url.prev} label={t('pagination.prev')} isDisabled={!page.url.prev} />
+
+  <span class="current-page font-semibold text-gray-700 mx-2">
+    {t('page')}
+    {page.currentPage}/{page.lastPage}
+  </span>
+
+  <PaginationButton href={page.url.next} label={t('pagination.next')} isDisabled={!page.url.next} />
+
+  <PaginationButton href={page.url.last} label={t('pagination.last')} isDisabled={!page.url.last} />
+</div>

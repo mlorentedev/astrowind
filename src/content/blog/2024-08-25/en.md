@@ -1,5 +1,5 @@
 ---
-title: "Speed Up Your Application with the Right Data Structures"
+title: 'Speed Up Your Application with the Right Data Structures'
 description: "In this post, we explore the importance of selecting the right data structures to enhance the performance of your applications. We'll discuss how different data structures can impact efficiency and provide examples to illustrate their use."
 pubDate: 2024-08-25
 readtime: true

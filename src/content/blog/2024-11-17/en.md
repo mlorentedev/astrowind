@@ -1,5 +1,5 @@
 ---
-title: "O yes! The Big O Notation"
+title: 'O yes! The Big O Notation'
 description: "In this post, we delve into Big O Notation, a fundamental concept in computer science used to describe the efficiency of algorithms. We'll explore how Big O helps in analyzing time complexity and provide examples to illustrate its application."
 pubDate: 2024-11-17
 lang: en

@@ -12,7 +12,20 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const projects = defineCollection({
+  // Type-check frontmatter using a schema
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    pubDate: z.coerce.date(),
+    heroImage: z.string().optional(),
+    pdf_url: z.string().optional(),
+    video_url: z.string().optional(),
+    lang: z.string().optional(),
+  }),
+});
+
+export const collections = { blog, projects };
 
 export async function getBlogPosts() {
   const posts = await getCollection('blog');
@@ -22,6 +35,18 @@ export async function getBlogPosts() {
     return {
       ...post,
       blog_slug,
+    };
+  });
+}
+
+export async function getProjects() {
+  const projects = await getCollection('projects');
+
+  return projects.map((project) => {
+    const project_slug = project.slug.split('/')[0];
+    return {
+      ...project,
+      project_slug,
     };
   });
 }

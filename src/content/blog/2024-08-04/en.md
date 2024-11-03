@@ -1,5 +1,5 @@
 ---
-title: "Unlocking The Secrets of Your Systems"
+title: 'Unlocking The Secrets of Your Systems'
 description: "In today’s fast-paced world of software development, understanding what happens inside your systems is crucial. Observability is the key to this understanding—it’s the ability to infer a system's internal state based on its external outputs. Think of it as the window through which we can view the inner workings of our applications by analyzing logs, metrics, and traces."
 pubDate: 2024-08-04
 lang: en

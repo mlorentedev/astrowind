@@ -1,5 +1,5 @@
 ---
-title: "Understanding the Future of Application Deployment"
+title: 'Understanding the Future of Application Deployment'
 description: "In today's fast-paced tech world, quickly and efficiently deploying software applications is critical for businesses of all sizes. Containers are revolutionary technology that provides a lightweight, portable, and isolated environment for applications to run."
 pubDate: 2024-05-12
 lang: en

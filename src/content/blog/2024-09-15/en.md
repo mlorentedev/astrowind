@@ -1,6 +1,6 @@
 ---
-title: "Scaling Beyond a Single Server"
-description: "In this post, I will discuss how to build a system from scratch that supports a single user and gradually scales to support one million users."
+title: 'Scaling Beyond a Single Server'
+description: 'In this post, I will discuss how to build a system from scratch that supports a single user and gradually scales to support one million users.'
 pubDate: 2024-09-15
 lang: en
 ---

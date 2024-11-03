@@ -1,39 +1,40 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { TITLE } from '../consts';
+import { TITLE, AVATAR } from '../../utils/consts';
 import LangLink from './LangLink.astro';
 import { useTranslations, type UiType } from '../i18n/utils';
 import Avatar from './Avatar.astro';
 import Dropdown from './Dropdown.astro';
 
 const { lang } = Astro.props;
+const t = useTranslations(lang as UiType);
 
 const homeSlug = `/${lang || ''}`;
 const blogSlug = `/${lang || ''}/blog`;
+const projectsSlug = `/${lang || ''}/projects`;
 const aboutSlug = `/${lang || ''}/about`;
-
-const t = useTranslations(lang as UiType);
-
-const avatarSrc = '/img/me-2.webp';
 ---
 
 <header class="bg-gray-100 text-gray-800 fixed w-full">
   <div class="border-2 px-4 py-2">
     <nav class="flex items-center justify-between text-gray-800">
       <h2 class="text-lg font-extrabold">
-        <a href={homeSlug} class="no-underline hover:text-teal-700 transition-colors duration-200"
+        <a href={homeSlug} class="no-underline hover:text-cyan-700 transition-colors duration-200"
           >{TITLE}</a
         >
       </h2>
       <!-- Desktop Links -->
       <div class="hidden md:flex md:items-center md:space-x-2 ml-auto">
-        <HeaderLink href={homeSlug} class="hover:text-teal-700 transition-colors duration-200"
+        <HeaderLink href={homeSlug} class="hover:text-cyan-700 transition-colors duration-200"
           >{t('nav.home')}</HeaderLink
         >
-        <HeaderLink href={blogSlug} class="hover:text-teal-700 transition-colors duration-200"
+        <HeaderLink href={blogSlug} class="hover:text-cyan-700 transition-colors duration-200"
           >{t('nav.blog')}</HeaderLink
         >
-        <HeaderLink href={aboutSlug} class="hover:text-teal-700 transition-colors duration-200"
+        <HeaderLink href={projectsSlug} class="hover:text-cyan-700 transition-colors duration-200"
+          >{t('nav.projects')}</HeaderLink
+        >
+        <HeaderLink href={aboutSlug} class="hover:text-cyan-700 transition-colors duration-200"
           >{t('nav.about')}</HeaderLink
         >
         <span class="px-2">|</span>
@@ -41,16 +42,16 @@ const avatarSrc = '/img/me-2.webp';
           <LangLink
             language="en"
             isActive={lang == 'en'}
-            class="hover:text-teal-700 transition-colors duration-200"
+            class="hover:text-cyan-700 transition-colors duration-200"
           />
           <LangLink
             language="es"
             isActive={lang == 'es'}
-            class="hover:text-teal-700 transition-colors duration-200"
+            class="hover:text-cyan-700 transition-colors duration-200"
           />
         </div>
       </div>
-      <Avatar src={avatarSrc} link={homeSlug} />
+      <Avatar src={AVATAR} link={homeSlug} />
       <button
         id="menu-toggle"
         class="md:hidden border-2 border-gray-400 bg-gray-100 px-2 py-1 rounded transition-colors duration-700"
@@ -62,7 +63,7 @@ const avatarSrc = '/img/me-2.webp';
   <Dropdown lang={lang} />
 </header>
 
-<script is:client>
+<script is:inline>
   const toggleButton = document.getElementById('menu-toggle');
   const menu = document.getElementById('menu');
 

@@ -1,6 +1,6 @@
 ---
-title: "Embracing the Power of Infrastructure as Code"
-description: "Infrastructure as Code (IaC) is revolutionizing the world of software development and IT operations. It’s transforming how we build, manage, and scale infrastructure by allowing us to describe and provision infrastructure elements through machine-readable scripts."
+title: 'Embracing the Power of Infrastructure as Code'
+description: 'Infrastructure as Code (IaC) is revolutionizing the world of software development and IT operations. It’s transforming how we build, manage, and scale infrastructure by allowing us to describe and provision infrastructure elements through machine-readable scripts.'
 pubDate: 2024-06-02
 lang: en
 ---

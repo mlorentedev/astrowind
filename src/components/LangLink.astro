@@ -1,9 +1,11 @@
 ---
-import type { HTMLAttributes } from 'astro/types';
 import { getLocalizedPathname } from '../i18n/utils';
-import { useTranslations, type UiType } from '../i18n/utils';
 
-type Props = HTMLAttributes<'a'>;
+interface Props {
+  language: string;
+  class?: string;
+  isActive?: boolean;
+}
 
 const { language, class: className, ...props } = Astro.props;
 const { pathname } = Astro.url;
@@ -11,9 +13,7 @@ const { pathname } = Astro.url;
 const lang = Astro.params?.lang || 'en';
 const isActive = language === lang;
 
-const t = useTranslations(lang as UiType);
-
-const href = getLocalizedPathname(pathname, language);
+const href = getLocalizedPathname(pathname, language as 'en' | 'es');
 ---
 
 <a

@@ -1,5 +1,5 @@
 ---
-title: "A Journey Through the World of Linux"
+title: 'A Journey Through the World of Linux'
 description: "Linux distributions are a fascinating aspect of the tech world, representing a powerful ecosystem that supports everything from personal computers to supercomputers. In this post, we'll dive deep into the main families of Linux distributions, explore their unique features, and understand their significance in the world of computing."
 pubDate: 2024-04-21
 lang: en

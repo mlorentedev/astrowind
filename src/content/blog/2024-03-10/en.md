@@ -1,6 +1,6 @@
 ---
-title: "The Magic of the Cloud"
-description: "Imagine a wide-open sky where you can store all your digital treasures and access them from anywhere. That’s the magic of the cloud—a virtual space where your data can live, free from the limits of your personal devices."
+title: 'The Magic of the Cloud'
+description: 'Imagine a wide-open sky where you can store all your digital treasures and access them from anywhere. That’s the magic of the cloud—a virtual space where your data can live, free from the limits of your personal devices.'
 pubDate: 2024-03-10
 lang: en
 ---

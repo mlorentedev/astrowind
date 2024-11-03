@@ -1,6 +1,6 @@
 ---
-title: "Automating Software Delivery"
-description: "In today’s fast-paced software development world, Continuous Delivery (CD) is a game changer. It’s all about automating the release of software changes to production environments in a reliable and frequent manner. Building on the foundation of Continuous Integration (CI), CD ensures that your software is always ready to be deployed. Let’s dive into the nuts and bolts of CI/CD and explore how these practices transform the software development lifecycle."
+title: 'Automating Software Delivery'
+description: 'In today’s fast-paced software development world, Continuous Delivery (CD) is a game changer. It’s all about automating the release of software changes to production environments in a reliable and frequent manner. Building on the foundation of Continuous Integration (CI), CD ensures that your software is always ready to be deployed. Let’s dive into the nuts and bolts of CI/CD and explore how these practices transform the software development lifecycle.'
 pubDate: 2024-06-23
 lang: en
 ---

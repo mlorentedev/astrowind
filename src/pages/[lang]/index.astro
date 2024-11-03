@@ -1,11 +1,11 @@
 ---
 import Landing from '../../layouts/Landing.astro';
+import RecentContent from '../../components/RecentContent.astro';
 
 import { getLangFromUrl, useTranslations } from '../../i18n/utils';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
-const today = new Date();
 
 export async function getStaticPaths() {
   return ['en', 'es'].map((lang) => {
@@ -14,4 +14,6 @@ export async function getStaticPaths() {
 }
 ---
 
-<Landing title={t('site.title')} description={t('site.subtitle')} lang={lang} />
+<Landing title={t('site.title')} description={t('site.subtitle')} lang={lang}>
+  <RecentContent />
+</Landing>

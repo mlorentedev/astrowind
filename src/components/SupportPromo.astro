@@ -1,0 +1,24 @@
+---
+import { BUY_ME_A_COFFEE } from '../../utils/consts';
+import { useTranslations, type UiType } from '../i18n/utils';
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as UiType);
+---
+
+<div
+  class="mt-2 mb-10 bg-cyan-700 text-white p-6 rounded-lg shadow-lg text-center max-w-2xl mx-auto"
+>
+  <div class="space-y-3">
+    <p class="text-lg font-medium">
+      <strong>{t('support.message')}</strong>
+    </p>
+  </div>
+  <button
+    class="mt-4 inline-flex items-center px-6 py-2 bg-white text-cyan-700 rounded-md font-medium hover:bg-cyan-100 transition-colors"
+  >
+    <a href={BUY_ME_A_COFFEE} target="_blank" class="block text-center">
+      {t('support.cta')}
+    </a>
+  </button>
+</div>

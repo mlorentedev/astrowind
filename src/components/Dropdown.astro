@@ -7,6 +7,7 @@ const { lang } = Astro.props;
 
 const homeSlug = `/${lang || ''}`;
 const blogSlug = `/${lang || ''}/blog`;
+const projectsSlug = `/${lang || ''}/projects`;
 const aboutSlug = `/${lang || ''}/about`;
 
 const t = useTranslations(lang as UiType);
@@ -15,33 +16,38 @@ const t = useTranslations(lang as UiType);
 <div id="menu" class="text-gray-800 md:hidden flex flex-col px-2">
   <HeaderLink
     href={homeSlug}
-    class="hover:text-teal-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-100 animate-fadeIn"
+    class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-100 animate-fadeIn"
   >
     {t('nav.home')}
   </HeaderLink>
   <HeaderLink
     href={blogSlug}
-    class="hover:text-teal-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-200 animate-fadeIn"
+    class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-200 animate-fadeIn"
   >
     {t('nav.blog')}
   </HeaderLink>
   <HeaderLink
-    href={aboutSlug}
-    class="hover:text-teal-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-300 animate-fadeIn"
+    href={projectsSlug}
+    class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-200 animate-fadeIn"
   >
-    {t('nav.about')}
-  </HeaderLink>
+    <HeaderLink
+      href={aboutSlug}
+      class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-300 animate-fadeIn"
+    >
+      {t('nav.about')}
+    </HeaderLink>
 
-  <div class="flex space-x-2">
-    <LangLink
-      language="en"
-      isActive={lang == 'en'}
-      class="hover:text-teal-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-400 animate-fadeIn"
-    />
-    <LangLink
-      language="es"
-      isActive={lang == 'es'}
-      class="hover:text-teal-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-500 animate-fadeIn"
-    />
-  </div>
+    <div class="flex space-x-2">
+      <LangLink
+        language="en"
+        isActive={lang == 'en'}
+        class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-400 animate-fadeIn"
+      />
+      <LangLink
+        language="es"
+        isActive={lang == 'es'}
+        class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-500 animate-fadeIn"
+      />
+    </div>
+  </HeaderLink>
 </div>

@@ -22,6 +22,7 @@ export function useTranslations(lang?: UiType) {
     let translation = ui[lang ?? DEFAULT_LANG][key] || ui[DEFAULT_LANG][key];
     if (args.length > 0) {
       for (let i = 0; i < args.length; i++) {
+        // @ts-ignore
         translation = translation.replace(`{${i}}`, args[i]);
       }
     }

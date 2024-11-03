@@ -1,5 +1,5 @@
 ---
-title: "Unlocking the efficiency with algorithms"
+title: 'Unlocking the efficiency with algorithms'
 description: "In this post, we explore how the choice of algorithms can significantly impact the efficiency of your programs. We'll discuss the importance of selecting the right algorithm and provide examples, such as sorting algorithms, to illustrate the differences in performance."
 pubDate: 2024-10-06
 lang: en

@@ -8,8 +8,8 @@ export const ui = {
     'nav.projects': 'Projects',
     'nav.blog': 'Blog',
     'nav.about': 'About',
-    'home.welcome': 'Welcome to my website',
-    'home.intro': 'This is a blog about my journey in the tech world. I hope you enjoy it!',
+    'projects.title': 'Projects',
+    'projects.subtitle': 'Swallowing up my weekends',
     'about.title': 'Who am I?',
     'about.subtitle': 'Some about me',
     'about.work.0': `   
@@ -48,6 +48,9 @@ export const ui = {
     'pagination.prev': 'Previous',
     'pagination.next': 'Next',
     'pagination.last': 'Last',
+    'support.message':
+      'If you find my open source projects useful, please consider supporting my work. Without your support I will not be able to continue.',
+    'support.cta': '❤ Support me',
   },
   es: {
     flag: '🇪🇸',
@@ -59,9 +62,8 @@ export const ui = {
     'nav.about': 'Sobre mí',
     'nav.blog': 'Blog',
     'nav.projects': 'Proyectos',
-    'home.welcome': 'Bienvenido a mi sitio web',
-    'home.intro':
-      'Este es un blog sobre mi viaje en el mundo de la tecnología. ¡Espero que lo disfrutes!',
+    'projects.title': 'Proyectos',
+    'projects.subtitle': 'Algunos proyectos que he creado para ti',
     'about.title': '¿Quién soy?',
     'about.subtitle': 'Un poco sobre mí',
     'about.work.0': `   
@@ -98,5 +100,8 @@ export const ui = {
     'pagination.prev': 'Anterior',
     'pagination.next': 'Siguiente',
     'pagination.last': 'Último',
+    'support.message':
+      'Si encuentras útiles mis proyectos de código abierto, por favor considera apoyar mi trabajo. Sin tu apoyo no podré continuar.',
+    'support.cta': '❤ Apóyame',
   },
 } as const;

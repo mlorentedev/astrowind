@@ -1,5 +1,5 @@
 ---
-title: "The power of estimations"
+title: 'The power of estimations'
 description: "In this post, we explore the importance of estimations in software development and site reliability engineering (SRE). We'll discuss how accurate estimations can improve project planning, resource allocation, and overall system reliability."
 pubDate: 2024-10-27
 lang: en
