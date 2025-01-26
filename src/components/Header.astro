@@ -1,18 +1,15 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import { TITLE, AVATAR } from '../../utils/consts';
-import LangLink from './LangLink.astro';
-import { useTranslations, type UiType } from '../i18n/utils';
+import { SITE_TITLE, AVATAR } from '../../utils/consts';
 import Avatar from './Avatar.astro';
 import Dropdown from './Dropdown.astro';
 
 const { lang } = Astro.props;
-const t = useTranslations(lang as UiType);
 
-const homeSlug = `/${lang || ''}`;
-const blogSlug = `/${lang || ''}/blog`;
-const projectsSlug = `/${lang || ''}/projects`;
-const aboutSlug = `/${lang || ''}/about`;
+const homeSlug = `/`;
+const blogSlug = `/blog`;
+const projectsSlug = `/projects`;
+const aboutSlug = `/about`;
 ---
 
 <header class="bg-gray-100 text-gray-800 fixed w-full">
@@ -20,36 +17,23 @@ const aboutSlug = `/${lang || ''}/about`;
     <nav class="flex items-center justify-between text-gray-800">
       <h2 class="text-lg font-extrabold">
         <a href={homeSlug} class="no-underline hover:text-cyan-700 transition-colors duration-200"
-          >{TITLE}</a
+          >{SITE_TITLE}</a
         >
       </h2>
       <!-- Desktop Links -->
       <div class="hidden md:flex md:items-center md:space-x-2 ml-auto">
         <HeaderLink href={homeSlug} class="hover:text-cyan-700 transition-colors duration-200"
-          >{t('nav.home')}</HeaderLink
+          >Inicio</HeaderLink
         >
         <HeaderLink href={blogSlug} class="hover:text-cyan-700 transition-colors duration-200"
-          >{t('nav.blog')}</HeaderLink
+          >Blog</HeaderLink
         >
         <HeaderLink href={projectsSlug} class="hover:text-cyan-700 transition-colors duration-200"
-          >{t('nav.projects')}</HeaderLink
+          >Proyectos</HeaderLink
         >
         <HeaderLink href={aboutSlug} class="hover:text-cyan-700 transition-colors duration-200"
-          >{t('nav.about')}</HeaderLink
+          >Sobre mí</HeaderLink
         >
-        <span class="px-2">|</span>
-        <div class="flex space-x-4">
-          <LangLink
-            language="en"
-            isActive={lang == 'en'}
-            class="hover:text-cyan-700 transition-colors duration-200"
-          />
-          <LangLink
-            language="es"
-            isActive={lang == 'es'}
-            class="hover:text-cyan-700 transition-colors duration-200"
-          />
-        </div>
       </div>
       <Avatar src={AVATAR} link={homeSlug} />
       <button

@@ -5,9 +5,12 @@ This is mi minimal website [mlorente.dev](https://mlorente.dev).
 ## Features
 
 - ✅ Same features as Astro Starter Kit Blog
-- ✅ i18n integration with sitemap
-- ✅ multilingual SEO optimization with canonical (EN) and alternate links
-- ✅ multilingual configuration with EN and ES
+- ✅ Minimal styling (make it your own!)
+- ✅ 100/100 Lighthouse performance
+- ✅ SEO-friendly with canonical URLs and OpenGraph data
+- ✅ Sitemap support
+- ✅ RSS Feed support
+- ✅ Markdown & MDX support
 
 ## 🚀 Project Structure
 
@@ -20,9 +23,8 @@ Inside of your Astro project, you'll see the following folders and files:
 │   ├── content/
 │   ├── layouts/
 │   └── pages/
-│       ├── [lang]/
-│           ├── blog/
-│               ├── [slug]/
+│       ├── blog/
+│           ├── [slug]/
 ├── astro.config.mjs
 ├── README.md
 ├── package.json
@@ -39,15 +41,6 @@ Or use `getBlogPosts()` from the `src/content/config.ts` file, which adds the bl
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-- Manage translations in `src/i18n/ui.ts`
-- Edit home page in `src/pages/index.astro` and multilingual in `src/pages/[lang]/index.astro`
-- Edit multilingual pages in `src/pages/[lang]/...`
-- Edit site header elements in `src/components/Header.astro`
-- Add your name to the footer in `src/components/Footer.astro`
-- Discover the blog articles included in ES, EN and FR in `src/pages/[lang]/blog/`
-- Customize the general layout of the site in `src/layouts/Layout.astro`
-- Customize the blog post page layout in `src/layouts/BlogPost.astro`
-
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
@@ -58,6 +51,8 @@ All commands are run from the root of the project, from a terminal:
 | `npm run dev`             | Starts local dev server at `localhost:4321`      |
 | `npm run build`           | Build your production site to `./dist/`          |
 | `npm run preview`         | Preview your build locally, before deploying     |
+| `npm run lint`            | Lint your code for formatting and errors         |
+| `npm run format`          | Format your code for consistency                 |
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
@@ -74,7 +69,6 @@ To disable the devToolbar, run this command:
 Check out usefull documentation for this template:
 
 - [Astro](https://docs.astro.build)
-- [Astro i18n](https://docs.astro.build/en/recipes/i18n/)
 - [Astro sitemaps](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
 
 ## Credit

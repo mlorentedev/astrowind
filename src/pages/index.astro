@@ -1,10 +1,12 @@
 ---
 import Landing from '../layouts/Landing.astro';
+import RecentContent from '../components/RecentContent.astro';
+import { HOME_TITLE, HOME_SUBTITLE } from '../../utils/consts';
 
-import { getLangFromUrl, useTranslations } from '../i18n/utils';
+const { lang } = Astro.props;
 
-const lang = getLangFromUrl(Astro.url);
-const t = useTranslations(lang);
 ---
 
-<Landing title={t('site.title')} description={t('site.subtitle')} lang={lang} />
+<Landing title={HOME_TITLE} description={HOME_SUBTITLE} lang={lang}>
+  <RecentContent />
+</Landing>

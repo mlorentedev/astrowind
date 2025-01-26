@@ -7,6 +7,12 @@ heroImage: /img/curso-programacion/funciones.png
 pdf_url: /pdf/2024-01-07-introduccion-a-la-programacion.pdf
 ---
 
+import HeaderLink from '../../components/HeaderLink.astro';
+
+<HeaderLink href="#" onclick="alert('clicked!')">
+  Embedded component in MDX
+</HeaderLink>
+
 La informática es la ciencia que estudia todo lo regerente al procesamiento de la información de manera automática. La programación es una de las disciplinas más importantes de la informática, ya que es la que permite a los seres humanos comunicarse con las máquinas.
 
 Un programa es una secuencia de instrucciones que le indican a una máquina qué hacer. Estas instrucciones se escriben en un lenguaje de programación, que es un lenguaje formal que se utiliza para expresar algoritmos.
@@ -18,7 +24,7 @@ Un computador es una máquina que está compuesta por varios elementos que traba
 La memoria principal es el lugar donde se almacenan los datos y las instrucciones que se están utilizando en un momento dado. Se producen operaciones básicas de lectura y escritura.
 
 <div align="center">
-  <img src="/img/curso-programacion/memoria-principal.png" alt="Memoria principal"/>
+  <img src="/img/curso-programacion/memoria-principal.png" alt="Memoria principal" />
 </div>
 
 La memoria de un ordenador tiene una organización matricial, en la que cada celda tiene una dirección única. La memoria se divide en dos tipos:
@@ -56,7 +62,7 @@ Los sistemas operativos se dividen en dos tipos:
 Un programa debe estar en memoria para ser ejecurado. El sistema operativo se encarga de cargar el programa en memoria, asignarle un espacio de memoria y ejecutarlo. Pueden existir varios programas en memoria al mismo tiempo, para esto el sistema operativo se encarga de gestionar la memoria, asignando y liberando espacio de memoria.
 
 <div align="center">
-  <img src="/img/curso-programacion/estructura-capas-ordenador.png" alt="Sistema operativo"/>
+  <img src="/img/curso-programacion/estructura-capas-ordenador.png" alt="Sistema operativo" />
 </div>
 
 ### Introducción a los lenguajes de programación
@@ -86,13 +92,13 @@ El traductor es un programa que se encarga de traducir un programa escrito en un
 La diferencia entre un compilador y un intérprete es que un compilador traduce un programa de una sola vez, mientras que un intérprete traduce un programa línea a línea. Los lenguajes compilados son más rápidos que los lenguajes interpretados, ya que no tienen que ser traducidos cada vez que se ejecutan.
 
 <div align="center">
-  <img src="/img/curso-programacion/compilador-vs-interprete.png" alt="Compilador vs intérprete"/>
+  <img src="/img/curso-programacion/compilador-vs-interprete.png" alt="Compilador vs intérprete" />
 </div>
 
 La compilación es el proceso de traducir un programa escrito en un lenguaje de programación a lenguaje máquina o programa objeto. Para ello, debe usar o montador o enlazador.
 
 <div align="center">
-  <img src="/img/curso-programacion/compilacion.png" alt="Compilación"/>
+  <img src="/img/curso-programacion/compilacion.png" alt="Compilación" />
 </div>
 
 ## Programación estructurada
@@ -137,13 +143,16 @@ La programación estructurada usa solamente tres estructuras de control: secuenc
 - La estructura de control de iteración es una estructura que permite ejecutar un bloque de instrucciones varias veces.
 
 <div align="center">
-  <img src="/img/curso-programacion/programacion-estructurada.png" alt="Programación estructurada"/>
+  <img
+    src="/img/curso-programacion/programacion-estructurada.png"
+    alt="Programación estructurada"
+  />
 </div>
 
 Veamos un ejemplo de cómo se puede resolver un problema con programación estructurada. Supongamos que queremos calcular si un año es bisiesto o no. Un año es bisiesto si es divisible por 4, pero no es divisible por 100, a menos que sea divisible por 400. Para resolver este problema, podemos utilizar la siguiente estructura de control:
 
 <div align="center">
-  <img src="/img/curso-programacion/ano-bisiesto.png" alt="Año bisiesto"/>
+  <img src="/img/curso-programacion/ano-bisiesto.png" alt="Año bisiesto" />
 </div>
 
 ```text
@@ -189,7 +198,7 @@ Los números enteros sin signo (o positivos) se condifican utilizando la codific
 Para operar con números binarios, se utilizan las mismas operaciones que con los números decimales, pero con las siguientes reglas.
 
 <div align="center">
-  <img src="/img/curso-programacion/operaciones-binarias.png" alt="Operaciones binarias"/>
+  <img src="/img/curso-programacion/operaciones-binarias.png" alt="Operaciones binarias" />
 </div>
 
 Aunque los números enteros sin signo se pueden representar con cualquier número de bits, en la práctica se suelen utilizar la bases de numeración octal (base 8) y hexadecimal (base 16) para simplificar la representación de los números binarios.
@@ -197,7 +206,7 @@ Aunque los números enteros sin signo se pueden representar con cualquier númer
 El sistema de numeración octal es un sistema posicional en el que cada dígito puede tener ocho valores: 0, 1, 2, 3, 4, 5, 6, 7. Para convertir un número decimal a octal, se divide el número decimal entre 8 sucesivamente y se guardan los restos de cada división.
 
 <div align="center">
-  <img src="/img/curso-programacion/sistema-octal.png" alt="Sistema octal"/>
+  <img src="/img/curso-programacion/sistema-octal.png" alt="Sistema octal" />
 </div>
 
 ```text
@@ -213,7 +222,7 @@ El sistema de numeración octal es un sistema posicional en el que cada dígito 
 El sistema de numeración hexadecimal es un sistema posicional en el que cada dígito puede tener dieciséis valores: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, A, B, C, D, E, F. Para convertir un número decimal a hexadecimal, se divide el número decimal entre 16 sucesivamente y se guardan los restos de cada división.
 
 <div align="center">
-  <img src="/img/curso-programacion/sistema-hexadecimal.png" alt="Sistema hexadecimal"/>
+  <img src="/img/curso-programacion/sistema-hexadecimal.png" alt="Sistema hexadecimal" />
 </div>
 
 ```text
@@ -661,7 +670,7 @@ También conocidas como estructuras de selección, se utilizan para tomar decisi
 Las estructuras condicionales simples se utilizan para ejecutar un conjunto de instrucciones si se cumple una condición. Las estructuras condicionales simples se dividen en dos tipos: estructuras condicionales simples con una sola alternativa y estructuras condicionales simples con dos alternativas.
 
 <div align="center">
-  <img src="/img/curso-programacion/if-else.png" alt="if-else" width="50%"/>
+  <img src="/img/curso-programacion/if-else.png" alt="if-else" width="50%" />
 </div>
 
 ```java
@@ -691,7 +700,7 @@ Estas sentencias se pueden anidar para realizar una selección múltiple. En est
 Las estructuras condicionales compuestas se utilizan para ejecutar un conjunto de instrucciones si se cumple una condición y otro conjunto de instrucciones si no se cumple la condición. Las estructuras condicionales compuestas se dividen en dos tipos: estructuras condicionales compuestas con una sola alternativa y estructuras condicionales compuestas con dos alternativas.
 
 <div align="center">
-  <img src="/img/curso-programacion/switch-case.png" alt="switch-case" width="50%"/>
+  <img src="/img/curso-programacion/switch-case.png" alt="switch-case" width="50%" />
 </div>
 
 El funcionamiento de esta estructura es el siguiente:
@@ -735,7 +744,7 @@ En este tipo de estructuras, se repite un conjunto de instrucciones en función 
 La sentencia _while_ se utiliza para repetir un conjunto de instrucciones mientras se cumpla una condición. La condición se evalúa antes de ejecutar el bloque de instrucciones.
 
 <div align="center">
-  <img src="/img/curso-programacion/while.png" alt="while" width="50%"/>
+  <img src="/img/curso-programacion/while.png" alt="while" width="50%" />
 </div>
 
 El funcionamiento es el siguiente:
@@ -764,7 +773,7 @@ Veamos un ejemplo en el que se pretende imprimir los números del 1 al 10. Si la
 La sentencia _do-while_ se utiliza para repetir un conjunto de instrucciones mientras se cumpla una condición. La condición se evalúa después de ejecutar el bloque de instrucciones.
 
 <div align="center">
-  <img src="/img/curso-programacion/do-while.png" alt="do-while" width="50%"/>
+  <img src="/img/curso-programacion/do-while.png" alt="do-while" width="50%" />
 </div>
 
 A diferencia de la sentencia _while_, la sentencia _do-while_ garantiza que el bloque de instrucciones se ejecuta al menos una vez. Esto es útil cuando se quiere ejecutar un bloque de instrucciones al menos una vez, independientemente de la condición.
@@ -781,7 +790,7 @@ A diferencia de la sentencia _while_, la sentencia _do-while_ garantiza que el b
 La sentencia _for_ se utiliza para repetir un conjunto de instrucciones un número determinado de veces. La sentencia _for_ se compone de tres partes: la inicialización, la condición y la actualización.
 
 <div align="center">
-  <img src="/img/curso-programacion/for.png" alt="for" width="50%"/>
+  <img src="/img/curso-programacion/for.png" alt="for" width="50%" />
 </div>
 
 El funcionamiento es el siguiente:
@@ -811,7 +820,7 @@ Tanto una cosa como la otra se consiguen mediante el uso de funciones. Una funci
 Un aspecto importante a cosinderar es que el hilo de ejecución no se pierde. Cuando desde un punto del programa llamamos a una función, la ejecuciñon sigue en el punto en que hemos definido la función; cuando esta última termina, la ejecución vuelve al punte dese el que se llamó a la función, continuando la ejecución normal. Este mecanismo puede repetise de forma reiterada, de forma que una función puede llamar a otra función, que a su vez puede llamar a otra función, y así sucesivamente... pero siempre manteniendo que tras la finalización de la ejecución de una función, el hilo de ejcución vuelve a la función que hizo la llamada.
 
 <div align="center">
-  <img src="/img/curso-programacion/funciones.png" alt="funciones"/>
+  <img src="/img/curso-programacion/funciones.png" alt="funciones" />
 </div>
 
 Esto significa que todas las funciones están definidas al mismo nivel, en el más exterior dentro de un fichero, y por lo tanto su visibilidad y el alcance son los mismoq ue los de las variables definidas a ese nivel.
@@ -1442,7 +1451,7 @@ Los programadores desarrollan código de forma colaborativa. Las herramientas po
 Estas herramientas tienen muchos nombres: sistema de control de versiones (VCS), sistema de control de código fuente (SCM), sistema de control de revisiones (RCS), repositorios de código, etc. Pero todos hacen lo mismo: rastrean los cambios en el código fuente.
 
 <div align="center">
-  <img src="/img/curso-programacion/cvs.png" alt="cvs"/>
+  <img src="/img/curso-programacion/cvs.png" alt="cvs" />
 </div>
 
 En esta ocasión, vamos a introducir Git. Git es un sistema de control de versiones con diversas caracterísitcas que lo hacen ideal para el desarrollo colaborativo:
@@ -1457,7 +1466,7 @@ En esta ocasión, vamos a introducir Git. Git es un sistema de control de versio
 Fué desarrollado por Linus Torvalds en 2005 para el desarrollo del kernel de Linux. Git es un sistema de control de versiones distribuido, lo que significa que cada desarrollador tiene una copia local del repositorio, lo que permite trabajar offline y luego sincronizar.
 
 <div align="center">
-  <img src="/img/curso-programacion/git.png" alt="git"/>
+  <img src="/img/curso-programacion/git.png" alt="git" />
 </div>
 
 Posee varios clientes como TortoiseGit, GitKraken, RabbitVCS, etc. Que permiten integrarlo en le explorador de ficheros.
@@ -1465,19 +1474,19 @@ Posee varios clientes como TortoiseGit, GitKraken, RabbitVCS, etc. Que permiten 
 Cabe destacar que está integrado en editores de código como Visual Studio Code, Atom, Sublime Text, etc.
 
 <div align="center">
-  <img src="/img/curso-programacion/ides.png" alt="ides"/>
+  <img src="/img/curso-programacion/ides.png" alt="ides" />
 </div>
 
 Además, existen múltiples aplicaciones para trabajar con los repositorios locales (clientes) mediante línea de comandos o interfaz gráfica. Aunque los clientes gráficos es posible que no ofrezcan todas las funcionalidades de Git se puede combinar sin problemas con las operaciones por líneas de comandos.
 
 <div align="center">
-  <img src="/img/curso-programacion/git-for-windows.png" alt="git-for-windows"/>
+  <img src="/img/curso-programacion/git-for-windows.png" alt="git-for-windows" />
 </div>
 
 Por último, existen servicios de alojamiento de repositorios remotos como GitHub, GitLab, Bitbucket, etc. Que permiten alojar repositorios de forma gratuita o de pago.
 
 <div align="center">
-  <img src="/img/curso-programacion/hosts.png" alt="hosts"/>
+  <img src="/img/curso-programacion/hosts.png" alt="hosts" />
 </div>
 
 ### Conceptos básicos
@@ -1509,7 +1518,7 @@ Veamos las zonas en las que está un fichero:
 - Staging area: no es una carpeta real, es una lista de ficheros, digamos que un área intermedia entre el directorio de trabajo y el repositorio local. En esta área se preparan los ficheros que se van a añadir al repositorio local. Si se va a trabajar con un repositorio existente, se añaden los ficheros al área de preparación con el comando `git add`.
 
 <div align="center">
-  <img src="/img/curso-programacion/git-areas.png" alt="git-areas"/>
+  <img src="/img/curso-programacion/git-areas.png" alt="git-areas" />
 </div>
 
 Los cuatro estados de los ficheros son:
@@ -1520,14 +1529,14 @@ Los cuatro estados de los ficheros son:
 - Staged: ficheros que han sido añadidos al área de preparación. Por ejemplo, ficheros que se han añadido al área de preparación y todavía no se han añadido al repositorio.
 
 <div align="center">
-  <img src="/img/curso-programacion/git-states.png" alt="git-states"/>
+  <img src="/img/curso-programacion/git-states.png" alt="git-states" />
 </div>
 
 Los _commits_ son las versiones de los ficheros que se guardan en el repositorio. Cada _commit_ tiene un identificador único que se genera automáticamente. Los _commits_ se crean con el comando `git commit`.
 Generalmente se añade un mensaje que describe los cambios realizados en el _commit_. Además cada commit se identifica con un hash que es un número hexadecimal de 40 caracteres que se genera automáticamente. Se suele usar la expresión "hash del commit" en lugar del "número de commit" o "id del commit" para referirse a este identificador.
 
 <div align="center">
-  <img src="/img/curso-programacion/git-commit.png" alt="git-commit"/>
+  <img src="/img/curso-programacion/git-commit.png" alt="git-commit" />
 </div>
 
 Los _snapshots_ son las versiones de los ficheros que se guardan en el repositorio. Cada _snapshot_ tiene un identificador único que se genera automáticamente. Los _snapshots_ se crean con el comando `git commit`.
@@ -1612,7 +1621,7 @@ Existen una serie de buenas prácticas en el uso de los commits:
 - Utilizar el cuerpo del mensaje para explicar el por qué del cambio
 
 <div align="center">
-  <img src="/img/curso-programacion/git-commit-example.png" alt="git-commit-example"/>
+  <img src="/img/curso-programacion/git-commit-example.png" alt="git-commit-example" />
 </div>
 
 Las ramas o _branches_ se utilizan para trabajar en paralelo en el mismo repositorio. Las ramas se utilizan para desarrollar nuevas funcionalidades o corregir errores sin afectar a la rama principal. Las ramas se crean con el comando `git branch`.
@@ -1622,7 +1631,7 @@ Una rama se puede crear partiendo de cualquier commit del repositorio. Es como h
 En cualquier momento se pueden mezclar el código de dos ramas diferentes. Cuando el código de la rama master está estbale, es cuando se publicará una nueva release.
 
 <div align="center">
-  <img src="/img/curso-programacion/git-branch.png" alt="git-branch"/>
+  <img src="/img/curso-programacion/git-branch.png" alt="git-branch" />
 </div>
 
 ```bash

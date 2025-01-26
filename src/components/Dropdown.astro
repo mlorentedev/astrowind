@@ -1,16 +1,12 @@
 ---
 import HeaderLink from './HeaderLink.astro';
-import LangLink from './LangLink.astro';
-import { useTranslations, type UiType } from '../i18n/utils';
 
 const { lang } = Astro.props;
 
-const homeSlug = `/${lang || ''}`;
-const blogSlug = `/${lang || ''}/blog`;
-const projectsSlug = `/${lang || ''}/projects`;
-const aboutSlug = `/${lang || ''}/about`;
-
-const t = useTranslations(lang as UiType);
+const homeSlug = `/`;
+const blogSlug = `/blog`;
+const projectsSlug = `/projects`;
+const aboutSlug = `/about`;
 ---
 
 <div id="menu" class="text-gray-800 md:hidden flex flex-col px-2">
@@ -18,36 +14,24 @@ const t = useTranslations(lang as UiType);
     href={homeSlug}
     class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-100 animate-fadeIn"
   >
-    {t('nav.home')}
+    Inicio
   </HeaderLink>
   <HeaderLink
     href={blogSlug}
     class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-200 animate-fadeIn"
   >
-    {t('nav.blog')}
+    Blog
   </HeaderLink>
   <HeaderLink
     href={projectsSlug}
     class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-200 animate-fadeIn"
   >
+    Proyectos
     <HeaderLink
       href={aboutSlug}
       class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-300 animate-fadeIn"
     >
-      {t('nav.about')}
+      Sobre mí
     </HeaderLink>
-
-    <div class="flex space-x-2">
-      <LangLink
-        language="en"
-        isActive={lang == 'en'}
-        class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-400 animate-fadeIn"
-      />
-      <LangLink
-        language="es"
-        isActive={lang == 'es'}
-        class="hover:text-cyan-700 block px-2 py-1 transition-transform duration-500 transform -translate-y-5 opacity-0 delay-500 animate-fadeIn"
-      />
-    </div>
   </HeaderLink>
 </div>

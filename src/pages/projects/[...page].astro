@@ -1,40 +1,35 @@
 ---
-import { getProjects } from '../../../content/config';
-import FormattedDate from '../../../components/FormattedDate.astro';
-import Layout from '../../../layouts/Layout.astro';
-import { useTranslations } from '../../../i18n/utils';
-import Pagination from '../../../components/Pagination.astro';
-import { PAGE_SIZE } from '../../../../utils/consts';
-import SupportPromo from '../../../components/SupportPromo.astro';
-import SectionHeader from '../../../components/SectionHeader.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Layout from '../../layouts/Layout.astro';
+import Pagination from '../../components/Pagination.astro';
+import { PAGE_SIZE, PROJECTS_TITLE, PROJECTS_SUBTITLE } from '../../../utils/consts';
+import SupportPromo from '../../components/SupportPromo.astro';
+import SectionHeader from '../../components/SectionHeader.astro';
+import { getCollection } from 'astro:content';
 
 const { lang } = Astro.params;
-const t = useTranslations(lang);
 const today = new Date();
 
 export async function getStaticPaths(
   {
     paginate,
   }: {
-    paginate: (items: any[], options: { params: { lang: string }; pageSize: number }) => any;
+    paginate: (items: any[], options: { pageSize: number }) => any;
   },
   today = new Date()
 ) {
-  const _projects = await getProjects();
-  return ['en', 'es'].flatMap((lang) => {
-    const projects_filtered = _projects
-      ?.filter((project) => project?.data?.lang === lang)
-      .filter((project) => new Date(project.data.pubDate) <= today)
-      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-    return paginate(projects_filtered, { params: { lang }, pageSize: PAGE_SIZE });
-  });
+  const _projects = await getCollection('projects');
+  const projects_filtered = _projects
+    .filter((project) => new Date(project.data.pubDate) <= today)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  return paginate(projects_filtered, { pageSize: PAGE_SIZE });
 }
 
 const { page } = Astro.props;
 ---
 
 <Layout title="Projects" description="Projects" lang={lang} pubDate={today}>
-  <SectionHeader title={t('projects.title')} subtitle={t('projects.subtitle')} />
+  <SectionHeader title={PROJECTS_TITLE} subtitle={PROJECTS_SUBTITLE} />
   <SupportPromo />
   <section id="projects-list" class="max-w-screen-lg mx-auto px-10">
     <ul class="flex flex-col gap-8 list-none px-10">
@@ -71,7 +66,7 @@ const { page } = Astro.props;
                   href={`/${lang}/projects/${project.project_slug}`}
                   class="block font-semibold text-lg hover:text-cyan-700 transition-colors duration-200"
                 >
-                  [{t('readmore')}]
+                  Ver más
                 </a>
               </p>
               {index < page.data.length - 1 && <hr class="my-4 border-gray-300" />}
@@ -81,6 +76,6 @@ const { page } = Astro.props;
       }
     </ul>
 
-    <Pagination page={page} t={t} />
+    <Pagination page={page} />
   </section>
 </Layout>

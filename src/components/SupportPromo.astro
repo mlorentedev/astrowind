@@ -1,9 +1,7 @@
 ---
 import { BUY_ME_A_COFFEE } from '../../utils/consts';
-import { useTranslations, type UiType } from '../i18n/utils';
 
 const { lang } = Astro.params;
-const t = useTranslations(lang as UiType);
 ---
 
 <div
@@ -11,14 +9,15 @@ const t = useTranslations(lang as UiType);
 >
   <div class="space-y-3">
     <p class="text-lg font-medium">
-      <strong>{t('support.message')}</strong>
+      <strong
+        >Si encuentras útiles mis proyectos de código abierto, por favor considera apoyar mi
+        trabajo. Sin tu apoyo no podré continuar.</strong
+      >
     </p>
   </div>
   <button
     class="mt-4 inline-flex items-center px-6 py-2 bg-white text-cyan-700 rounded-md font-medium hover:bg-cyan-100 transition-colors"
   >
-    <a href={BUY_ME_A_COFFEE} target="_blank" class="block text-center">
-      {t('support.cta')}
-    </a>
+    <a href={BUY_ME_A_COFFEE} target="_blank" class="block text-center"> ❤ Apóyame </a>
   </button>
 </div>

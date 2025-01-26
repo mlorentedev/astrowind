@@ -1,7 +1,9 @@
+import { glob } from 'astro/loaders';
 import { defineCollection, z } from 'astro:content';
-import { getCollection } from 'astro:content';
 
 const blog = defineCollection({
+  // Load Markdown and MDX files in the `src/content/blog/` directory.
+  loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
   // Type-check frontmatter using a schema
   schema: z.object({
     title: z.string(),
@@ -13,7 +15,8 @@ const blog = defineCollection({
 });
 
 const projects = defineCollection({
-  // Type-check frontmatter using a schema
+  // Load Markdown and MDX files in the `src/content/projects/` directory.
+  loader: glob({ base: './src/content/projects', pattern: '**/*.{md,mdx}' }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -26,27 +29,3 @@ const projects = defineCollection({
 });
 
 export const collections = { blog, projects };
-
-export async function getBlogPosts() {
-  const posts = await getCollection('blog');
-
-  return posts.map((post) => {
-    const blog_slug = post.slug.split('/')[0];
-    return {
-      ...post,
-      blog_slug,
-    };
-  });
-}
-
-export async function getProjects() {
-  const projects = await getCollection('projects');
-
-  return projects.map((project) => {
-    const project_slug = project.slug.split('/')[0];
-    return {
-      ...project,
-      project_slug,
-    };
-  });
-}

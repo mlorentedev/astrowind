@@ -1,14 +1,9 @@
 ---
 // Import the global.css file here so that it is included on
 // all pages through the use of the <BaseHead /> component.
-import {
-  LANGUAGES,
-  pathNameIsInLanguage,
-  DEFAULT_LANG,
-  getLocalizedPathname,
-} from '../i18n/utils';
 
 import '../styles/global.css';
+import { SITE_TITLE } from '../../utils/consts';
 
 interface Props {
   title: string;
@@ -17,30 +12,23 @@ interface Props {
   lang?: string;
 }
 
-const canonicalPathname = pathNameIsInLanguage(Astro.url.pathname, DEFAULT_LANG)
-  ? Astro.url.pathname
-  : getLocalizedPathname(Astro.url.pathname, DEFAULT_LANG);
-const canonicalURL = new URL(canonicalPathname, Astro.site);
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const { title, description, image = '' } = Astro.props;
-
-const alternateLang = Object.keys(LANGUAGES);
-const alternateLinks = alternateLang.map((_lang: string) => {
-  return {
-    href: new URL(getLocalizedPathname(Astro.url.pathname, _lang as keyof typeof LANGUAGES), Astro.site),
-    hreflang: _lang,
-  };
-});
 ---
 
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<meta name="generator" content={Astro.generator} />
-
 <link rel="sitemap" href="/sitemap-index.xml" />
-
+<link
+  rel="alternate"
+  type="application/rss+xml"
+  title={SITE_TITLE}
+  href={new URL('rss.xml', Astro.site)}
+/>
+<meta name="generator" content={Astro.generator} />
 <!-- Font preloads -->
 <link
   rel="stylesheet"
@@ -54,11 +42,6 @@ const alternateLinks = alternateLang.map((_lang: string) => {
 <link rel="canonical" href={canonicalURL} />
 
 <!-- Alternate URLs -->
-{
-  alternateLinks.map(({ href, hreflang }) => (
-    <link rel="alternate" href={href} hreflang={hreflang} />
-  ))
-}
 
 <!-- Primary Meta Tags -->
 <title>{title}</title>

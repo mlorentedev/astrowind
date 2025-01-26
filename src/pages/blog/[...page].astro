@@ -1,31 +1,26 @@
 ---
-import { getBlogPosts } from '../../../content/config';
-import FormattedDate from '../../../components/FormattedDate.astro';
-import Layout from '../../../layouts/Layout.astro';
-import { useTranslations } from '../../../i18n/utils';
-import Pagination from '../../../components/Pagination.astro';
-import { PAGE_SIZE } from '../../../../utils/consts';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Layout from '../../layouts/Layout.astro';
+import Pagination from '../../components/Pagination.astro';
+import { PAGE_SIZE } from '../../../utils/consts';
+import { getCollection } from 'astro:content';
 
 const { lang } = Astro.params;
-const t = useTranslations(lang);
 const today = new Date();
 
 export async function getStaticPaths(
   {
     paginate,
   }: {
-    paginate: (items: any[], options: { params: { lang: string }; pageSize: number }) => any;
+    paginate: (items: any[], options: { pageSize: number }) => any;
   },
   today = new Date()
 ) {
-  const _posts = await getBlogPosts();
-  return ['en', 'es'].flatMap((lang) => {
-    const posts_filtered = _posts
-      ?.filter((blog) => blog?.data?.lang === lang)
-      .filter((blog) => new Date(blog.data.pubDate) <= today)
-      .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
-    return paginate(posts_filtered, { params: { lang }, pageSize: PAGE_SIZE });
-  });
+  const _posts = await getCollection('blog');
+  const posts_filtered = _posts
+    .filter((blog) => new Date(blog.data.pubDate) <= today)
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+  return paginate(posts_filtered, { pageSize: PAGE_SIZE });
 }
 
 const { page } = Astro.props;
@@ -49,7 +44,7 @@ const { page } = Astro.props;
             index: number
           ) => (
             <li class="w-full sm:w-auto">
-              <a href={`/${lang}/blog/${post.blog_slug}`} class="block">
+              <a href={`/blog/${post.blog_slug}`} class="block">
                 <h4
                   class={`text-gray-800 font-bold text-4xl mb-2 hover:text-cyan-700 transition-colors duration-200`}
                 >
@@ -62,10 +57,10 @@ const { page } = Astro.props;
               <p>
                 {post.data.description}
                 <a
-                  href={`/${lang}/blog/${post.blog_slug}`}
+                  href={`/blog/${post.blog_slug}`}
                   class="block font-semibold text-lg hover:text-cyan-700 transition-colors duration-200"
                 >
-                  [{t('readmore')}]
+                  Leer más
                 </a>
               </p>
               {index < page.data.length - 1 && <hr class="my-4 border-gray-300" />}
@@ -75,6 +70,6 @@ const { page } = Astro.props;
       }
     </ul>
 
-    <Pagination page={page} t={t} />
+    <Pagination page={page} />
   </section>
 </Layout>
