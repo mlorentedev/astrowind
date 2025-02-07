@@ -2,27 +2,27 @@
 import { TWITTER_USERNAME, YOUTUBE_USERNAME } from '../../utils/consts';
 ---
 
-<section class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<section class="max-w-6xl mx-auto py-4 px-3 sm:px-4 lg:px-6">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
     {/* Social Media Card */}
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-800">
-      <div class="p-6">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Latest Updates</h2>
+    <div class="bg-white rounded-md shadow overflow-hidden dark:bg-gray-800">
+      <div class="p-4">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Mis últimos posts</h2>
           <a
             href={`https://x.com/${TWITTER_USERNAME}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-blue-500 hover:text-blue-600 dark:text-blue-400"
+            class="text-blue-500 hover:text-blue-600 dark:text-blue-400 text-sm"
           >
-            Follow @{TWITTER_USERNAME}
+            @{TWITTER_USERNAME}
           </a>
         </div>
-        <div class="space-y-6">
+        <div class="space-y-3">
           {/* Twitter/X Timeline Embed */}
           <a
             class="twitter-timeline"
-            data-height="400"
+            data-height="300"
             data-theme="light"
             href={`https://twitter.com/${TWITTER_USERNAME}?ref_src=twsrc%5Etfw`}
           >
@@ -35,17 +35,17 @@ import { TWITTER_USERNAME, YOUTUBE_USERNAME } from '../../utils/consts';
     </div>
 
     {/* YouTube Videos Card */}
-    <div class="bg-white rounded-lg shadow-lg overflow-hidden dark:bg-gray-800">
-      <div class="p-6">
-        <div class="flex items-center justify-between mb-6">
-          <h2 class="text-2xl font-bold text-gray-900 dark:text-white">Latest Videos</h2>
+    <div class="bg-white rounded-md shadow overflow-hidden dark:bg-gray-800">
+      <div class="p-4">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-xl font-bold text-gray-900 dark:text-white">Latest Videos</h2>
           <a
             href={`https://youtube.com/@${YOUTUBE_USERNAME}`}
             target="_blank"
             rel="noopener noreferrer"
-            class="text-red-500 hover:text-red-600"
+            class="text-red-500 hover:text-red-600 text-sm"
           >
-            VVer canal de YouTube
+            Ver canal de YouTube
           </a>
         </div>
         <div class="space-y-6">
@@ -56,20 +56,10 @@ import { TWITTER_USERNAME, YOUTUBE_USERNAME } from '../../utils/consts';
                 id: 'EXAMPLE1',
                 title: 'Understanding Web Development in 2024',
                 duration: '12:34',
-              },
-              {
-                id: 'EXAMPLE2',
-                title: 'Modern JavaScript Features Explained',
-                duration: '15:21',
-              },
-              {
-                id: 'EXAMPLE3',
-                title: 'Building with Astro and TailwindCSS',
-                duration: '18:45',
-              },
+              }
             ].map((video) => (
               <div class="group">
-                <div class="relative aspect-w-16 aspect-h-9 mb-2">
+                <div class="relative aspect-w-16 aspect-h-9 mb-1">
                   <img
                     src={`https://i.ytimg.com/vi/${video.id}/maxresdefault.jpg`}
                     alt={video.title}
@@ -91,15 +81,3 @@ import { TWITTER_USERNAME, YOUTUBE_USERNAME } from '../../utils/consts';
     </div>
   </div>
 </section>
-
-<style>
-  /* Optional: Add custom styles for dark mode or other tweaks */
-  :global(.dark) .twitter-timeline {
-    background-color: #1f2937;
-  }
-</style>
-
-<script>
-  // Optional: Add any client-side interactivity here
-  // For example, lazy loading videos when they come into view
-</script>

@@ -1,9 +1,9 @@
-export const SITE_TITLE = 'Manu Lorente';
+export const SITE_TITLE = 'mlorenteDev';
 export const SITE_SUBTITLE = 'Ingeniero | Cloud & DevOps';
 export const SITE_DESCRIPTION = 'Ingeniero | Cloud & DevOps';
 export const SITE_AUTHOR = 'Manu Lorente';
-export const HOME_TITLE = 'Manu Lorente';
-export const HOME_SUBTITLE = 'Bienvenido a mi web';
+export const HOME_TITLE = 'Escribo código irrompible';
+export const HOME_SUBTITLE = 'Todo sobre DevOps, Cloud y más';
 export const ABOUT_TITLE = 'Sobre mí';
 export const ABOUT_SUBTITLE = '¿Quién soy?';
 export const PROJECTS_TITLE = 'Proyectos';
@@ -13,3 +13,4 @@ export const AVATAR = '/img/me-2.webp';
 export const BUY_ME_A_COFFEE = 'https://www.buymeacoffee.com/mlorente';
 export const TWITTER_USERNAME = 'mlorentedev';
 export const YOUTUBE_USERNAME = 'mlorentedev';
+export const QUOTE="La vida es como una bicicleta, para mantener el equilibrio debes seguir adelante.";

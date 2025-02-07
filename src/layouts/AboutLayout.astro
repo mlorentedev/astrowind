@@ -1,5 +1,5 @@
 ---
-import Layout from './Layout.astro';
+import BaseLayout from './BaseLayout.astro';
 import SectionHeader from '../components/SectionHeader.astro';
 
 import { ABOUT_TITLE, ABOUT_SUBTITLE } from '../../utils/consts';
@@ -8,7 +8,7 @@ const { title, description, heroImage, lang } = Astro.props;
 const pubDate = new Date();
 ---
 
-<Layout title={title} description={description} heroImage={heroImage} pubDate={pubDate} lang={lang}>
+<BaseLayout title={title} description={description} heroImage={heroImage} pubDate={pubDate} lang={lang}>
   <SectionHeader title={ABOUT_TITLE} subtitle={ABOUT_SUBTITLE} />
   <article class="text-gray-800 max-w-3xl mx-auto p-4">
     <div class="w-full max-w-full h-auto overflow-hidden rounded-lg shadow-lg mb-6">
@@ -18,4 +18,4 @@ const pubDate = new Date();
       <slot />
     </div>
   </article>
-</Layout>
+</BaseLayout>

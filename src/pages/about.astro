@@ -1,13 +1,13 @@
 ---
 import { ABOUT_SUBTITLE, ABOUT_TITLE } from '../../utils/consts';
-import About from '../layouts/About.astro';
+import AboutLayout from '../layouts/AboutLayout.astro';
 
 const heroImage = '/img/colorado.webp';
 
 const { lang } = Astro.props;
 ---
 
-<About title={ABOUT_TITLE} description={ABOUT_SUBTITLE} heroImage={heroImage} lang={lang}>
+<AboutLayout title={ABOUT_TITLE} description={ABOUT_SUBTITLE} heroImage={heroImage} lang={lang}>
   <div class="py-2">
     <p>
       <span class="fa fa-briefcase about-icon"></span>
@@ -115,4 +115,4 @@ const { lang } = Astro.props;
       🌍Si he logrado ver más lejos, ha sido porque he subido a hombros de gigantes🌍
     </p>
   </div>
-</About>
+</AboutLayout>

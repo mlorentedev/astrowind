@@ -2,7 +2,7 @@
 import { getCollection } from 'astro:content';
 import { render } from 'astro:content';
 
-import BlogPost from '../../layouts/BlogPost.astro';
+import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
 import FormattedDate from '../../components/FormattedDate.astro';
 import { getReadingTime } from '../../../utils/reading-time';
 
@@ -23,7 +23,7 @@ const { Content } = await render(page);
 const readingTime = getReadingTime(page.body);
 ---
 
-<BlogPost {...page.data}>
+<BlogPostLayout {...page.data}>
   <article class="max-w-screen-md mx-auto p-4">
     <div class="mb-4">
       <h1 class="text-4xl font-extrabold text-gray-900">{page.data.title}</h1>
@@ -37,4 +37,4 @@ const readingTime = getReadingTime(page.body);
       <Content />
     </div>
   </article>
-</BlogPost>
+</BlogPostLayout>

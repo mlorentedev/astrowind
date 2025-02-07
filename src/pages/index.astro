@@ -1,5 +1,6 @@
 ---
-import Landing from '../layouts/Landing.astro';
+import IndexLayout from '../layouts/IndexLayout.astro';
+import Introduction from '../components/Introduction.astro';
 import RecentContent from '../components/RecentContent.astro';
 import { HOME_TITLE, HOME_SUBTITLE } from '../../utils/consts';
 
@@ -7,6 +8,7 @@ const { lang } = Astro.props;
 
 ---
 
-<Landing title={HOME_TITLE} description={HOME_SUBTITLE} lang={lang}>
+<IndexLayout title={HOME_TITLE} description={HOME_SUBTITLE} lang={lang}>
+  <Introduction />
   <RecentContent />
-</Landing>
+</IndexLayout>

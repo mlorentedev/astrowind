@@ -1,6 +1,6 @@
 ---
 import FormattedDate from '../../components/FormattedDate.astro';
-import Layout from '../../layouts/Layout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import Pagination from '../../components/Pagination.astro';
 import { PAGE_SIZE } from '../../../utils/consts';
 import { getCollection } from 'astro:content';
@@ -26,7 +26,7 @@ export async function getStaticPaths(
 const { page } = Astro.props;
 ---
 
-<Layout title="Blog" description="Blog" lang={lang} pubDate={today}>
+<BaseLayout title="Blog" description="Blog" lang={lang} pubDate={today}>
   <section id="posts-list" class="max-w-screen-lg mx-auto px-10">
     <ul class="flex flex-col gap-8 list-none px-10">
       {
@@ -72,4 +72,4 @@ const { page } = Astro.props;
 
     <Pagination page={page} />
   </section>
-</Layout>
+</BaseLayout>

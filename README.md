@@ -12,11 +12,13 @@ This is mi minimal website [mlorente.dev](https://mlorente.dev).
 - ✅ RSS Feed support
 - ✅ Markdown & MDX support
 
-## 🚀 Project Structure
+## Project Structure
 
 Inside of your Astro project, you'll see the following folders and files:
 
 ```text
+|── .github/
+|── .vscode/
 ├── public/
 ├── src/
 │   ├── components/
@@ -25,9 +27,15 @@ Inside of your Astro project, you'll see the following folders and files:
 │   └── pages/
 │       ├── blog/
 │           ├── [slug]/
+├── utils/
+|── .gitignore
+|── .pretierignore
+|── .prettierrc
 ├── astro.config.mjs
-├── README.md
+|── eslint.config.cjs
 ├── package.json
+|── README.md
+|── tailwind.config.cjs
 └── tsconfig.json
 ```
 
@@ -41,7 +49,7 @@ Or use `getBlogPosts()` from the `src/content/config.ts` file, which adds the bl
 
 Any static assets, like images, can be placed in the `public/` directory.
 
-## 🧞 Commands
+## Commands
 
 All commands are run from the root of the project, from a terminal:
 
@@ -64,13 +72,19 @@ To disable the devToolbar, run this command:
     astro preferences disable devToolbar
 ```
 
-## 👀 Want to learn more?
+## Want to learn more?
 
 Check out usefull documentation for this template:
 
-- [Astro](https://docs.astro.build)
-- [Astro sitemaps](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
+[Astro](https://docs.astro.build)  
+[Astro sitemaps](https://docs.astro.build/en/guides/integrations-guide/sitemap/)
 
-## Credit
+## TODO
 
-This theme is based off of [Astro Starter Kit Blog template](https://github.com/withastro/astro/tree/latest/examples/blog).
+- [ ] Copy in landing page
+- [ ] Sections: Inicio, Blog, Sobre mí
+- [ ] Dynamic quotes at the end of the page
+- [ ] Lead capture with some freebie in landing page
+- [ ] Most recent RRSS in some section - dynamic with CI/CD
+- [ ] Search bar for posts and tags
+- [ ] Light and dark mode
