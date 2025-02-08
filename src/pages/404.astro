@@ -1,14 +1,14 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 
 const { title, description, lang } = Astro.props;
 const pubDate = new Date();
 ---
 
-<Layout title={title} description={description} pubDate={pubDate} lang={lang}>
+<BaseLayout title={title} description={description} pubDate={pubDate} lang={lang}>
   <div class="flex flex-col items-center justify-center min-h-screen">
     <a href="/">
       <img src="/img/404.webp" alt="Not Found" class="w-full max-w-lg" />
     </a>
   </div>
-</Layout>
+</BaseLayout>

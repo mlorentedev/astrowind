@@ -1,14 +1,14 @@
 ---
 import IndexLayout from '../layouts/IndexLayout.astro';
 import Introduction from '../components/Introduction.astro';
-import RecentContent from '../components/RecentContent.astro';
 import { HOME_TITLE, HOME_SUBTITLE } from '../../utils/consts';
+import SubscribeForm from '../components/SubscribeForm.astro';
 
 const { lang } = Astro.props;
 
 ---
 
 <IndexLayout title={HOME_TITLE} description={HOME_SUBTITLE} lang={lang}>
-  <Introduction />
-  <RecentContent />
+  <Introduction/>
+  <SubscribeForm/>
 </IndexLayout>

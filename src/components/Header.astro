@@ -4,12 +4,12 @@ import { SITE_TITLE, AVATAR } from '../../utils/consts';
 import Avatar from './Avatar.astro';
 import Dropdown from './Dropdown.astro';
 
-const { lang } = Astro.props;
-
 const homeSlug = `/`;
 const blogSlug = `/blog`;
 const projectsSlug = `/projects`;
 const aboutSlug = `/about`;
+const contactSlug = `/contact`;
+
 ---
 
 <header class="bg-gray-100 text-gray-800 fixed w-full">
@@ -21,35 +21,49 @@ const aboutSlug = `/about`;
         >
       </h2>
       <!-- Desktop Links -->
-      <div class="hidden md:flex md:items-center md:space-x-2 ml-auto">
+      <div class="hidden custom:flex custom:items-center custom:space-x-2 ml-auto">
         <HeaderLink href={homeSlug} class="hover:text-cyan-700 transition-colors duration-200"
           >Inicio</HeaderLink
         >
+        <HeaderLink href={aboutSlug} class="hover:text-cyan-700 transition-colors duration-200"
+          >Quién soy</HeaderLink
+        >
         <HeaderLink href={blogSlug} class="hover:text-cyan-700 transition-colors duration-200"
-          >Blog</HeaderLink
+          >Mi vlog</HeaderLink
         >
         <HeaderLink href={projectsSlug} class="hover:text-cyan-700 transition-colors duration-200"
-          >Proyectos</HeaderLink
+          >Mis proyectos</HeaderLink
         >
-        <HeaderLink href={aboutSlug} class="hover:text-cyan-700 transition-colors duration-200"
-          >Sobre mí</HeaderLink
-        >
+        <HeaderLink href={contactSlug} class="hover:text-cyan-700 transition-colors duration-200"
+          >Contáctame</HeaderLink
+        >      
       </div>
       <Avatar src={AVATAR} link={homeSlug} />
       <button
         id="menu-toggle"
-        class="md:hidden border-2 border-gray-400 bg-gray-100 px-2 py-1 rounded transition-colors duration-700"
+        class="custom:hidden border-2 border-gray-400 bg-gray-100 px-2 py-1 rounded transition-colors duration-700"
       >
         &#9776;
       </button>
     </nav>
   </div>
-  <Dropdown lang={lang} />
+  <Dropdown />
 </header>
 
 <script is:inline>
   const toggleButton = document.getElementById('menu-toggle');
   const menu = document.getElementById('menu');
+  const menuLinks = document.querySelectorAll('.menu-link');
+
+  function closeMenu() {
+    if (!menu.classList.contains('hidden')) {
+      menu.classList.add('hidden');
+      toggleButton.classList.remove('border-gray-800', 'bg-gray-300', 'text-gray-800');
+      toggleButton.classList.add('border-gray-600', 'bg-gray-100', 'text-gray-800');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', closeMenu);
 
   toggleButton.addEventListener('click', () => {
     menu.classList.toggle('hidden');
@@ -62,4 +76,12 @@ const aboutSlug = `/about`;
       toggleButton.classList.remove('border-gray-600', 'bg-gray-100', 'text-gray-800');
     }
   });
+
+  menuLinks.forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  
+  window.addEventListener('scroll', closeMenu);
+  window.addEventListener('resize', closeMenu);
+  window.addEventListener('orientationchange', closeMenu);
 </script>

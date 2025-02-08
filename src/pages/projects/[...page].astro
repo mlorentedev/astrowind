@@ -3,7 +3,6 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Pagination from '../../components/Pagination.astro';
 import { PAGE_SIZE, PROJECTS_TITLE, PROJECTS_SUBTITLE } from '../../../utils/consts';
-import SupportPromo from '../../components/SupportPromo.astro';
 import SectionHeader from '../../components/SectionHeader.astro';
 import { getCollection } from 'astro:content';
 
@@ -30,7 +29,6 @@ const { page } = Astro.props;
 
 <BaseLayout title="Projects" description="Projects" lang={lang} pubDate={today}>
   <SectionHeader title={PROJECTS_TITLE} subtitle={PROJECTS_SUBTITLE} />
-  <SupportPromo />
   <section id="projects-list" class="max-w-screen-lg mx-auto px-10">
     <ul class="flex flex-col gap-8 list-none px-10">
       {
