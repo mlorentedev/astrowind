@@ -1,0 +1,9 @@
+---
+const params = new URL(window.location.href).searchParams;
+const meetingLink = params.get("meet") || "#";
+
+---
+
+<h1>¡Reserva confirmada!</h1>
+<p>Tu videollamada ha sido programada. Únete aquí:</p>
+<a href={meetingLink} class="bg-green-500 text-white px-4 py-2 rounded">Unirme a la Videollamada</a>

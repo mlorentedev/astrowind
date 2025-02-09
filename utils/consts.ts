@@ -15,3 +15,4 @@ export const TWITTER_USERNAME = 'mlorentedev';
 export const YOUTUBE_USERNAME = 'mlorentedev';
 export const QUOTE="Todo lo que escuchamos es una opinión, no un hecho. Todo lo que vemos es una perspectiva, no la verdad.";
 export const QUOTE_AUTHOR="Marco Aurelio";
+export const STRIPE_CHECKOUT_SESSION_URL = 'https://buy.stripe.com/test_dR69CS4LKfGodCofYY';
