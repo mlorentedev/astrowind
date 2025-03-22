@@ -15,10 +15,6 @@ on:
         options:
           - staging
           - production
-      version:
-        description: 'Version to deploy'
-        required: false
-        type: string
   # Trigger when a pull request is closed and merged
   pull_request:
     types: [closed]
@@ -31,23 +27,14 @@ jobs:
     if: github.event_name != 'pull_request' || github.event.pull_request.merged == true
     outputs:
       environment: ${{ steps.set-env.outputs.environment }}
-      version: ${{ steps.set-env.outputs.version }}
     steps:   
-      - name: Set environment and version
+      - name: Set environment
         id: set-env
         run: |
           # For workflow_dispatch
           if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
             echo "environment=${{ github.event.inputs.environment }}" >> "$GITHUB_OUTPUT"
-            if [[ -n "${{ github.event.inputs.version }}" ]]; then
-              echo "version=${{ github.event.inputs.version }}" >> "$GITHUB_OUTPUT"
-            elif [[ "${{ github.event.inputs.environment }}" == "production" ]]; then
-              echo "version=latest" >> "$GITHUB_OUTPUT"
-            else
-              VERSION_FALLBACK="${{ secrets.VERSION || 'latest' }}"
-              echo "version=${VERSION_FALLBACK}" >> "$GITHUB_OUTPUT"
-            fi
-    
+
           # For repository_dispatch  
           elif [[ "${{ github.event_name }}" == "repository_dispatch" ]]; then
             if [[ "${{ github.event.client_payload.ref }}" == "refs/heads/master" ]]; then
@@ -55,22 +42,18 @@ jobs:
             else
               echo "environment=staging" >> "$GITHUB_OUTPUT"
             fi
-            VERSION_FALLBACK="${{ github.event.client_payload.version || 'latest' }}"
-            echo "version=${VERSION_FALLBACK}" >> "$GITHUB_OUTPUT"
     
           # For pull_request merged  
           else
             if [[ "${{ github.event.pull_request.base.ref }}" == "master" ]]; then
               echo "environment=production" >> "$GITHUB_OUTPUT"
-              echo "version=latest" >> "$GITHUB_OUTPUT"
             else
               echo "environment=staging" >> "$GITHUB_OUTPUT"
-              echo "version=develop" >> "$GITHUB_OUTPUT"
             fi
           fi
 
   deploy:
-    name: Deploy version ${{ needs.prepare.outputs.version }} to ${{ needs.prepare.outputs.environment }}
+    name: Deploy version to ${{ needs.prepare.outputs.environment }}
     needs: prepare
     runs-on: ubuntu-latest
     environment: ${{ needs.prepare.outputs.environment }}
@@ -116,7 +99,7 @@ jobs:
           
           # Deployment variables
           ENV="${{ needs.prepare.outputs.environment }}"
-          VERSION="${{ needs.prepare.outputs.version }}"
+          VERSION="${{ secrets.VERSION }}"
           DEPLOY_PATH="${{ env.DEPLOY_PATH }}"
           DOMAIN="${{ env.DOMAIN }}"
           EMAIL="${{ secrets.PUBLIC_SITE_MAIL }}"
@@ -155,9 +138,7 @@ jobs:
           
           # Set environment variables for deployment
           cd "${DEPLOY_PATH}"
-          export TAG="${VERSION}"
           export DOCKERHUB_USERNAME="$DOCKERHUB_USERNAME"
-          echo "Deploying in ${DEPLOY_PATH} with tag ${TAG}"
 
           # Replace placeholders in Nginx configuration if needed
           if [ -f "${DEPLOY_PATH}/docker/nginx/conf.d/default.conf" ]; then

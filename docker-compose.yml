@@ -1,6 +1,6 @@
 services:
   frontend:
-    image: ${DOCKERHUB_USERNAME:-mlorentedev}/mlorente-frontend:${TAG:-latest}
+    image: ${DOCKERHUB_USERNAME:-mlorentedev}/mlorente-frontend:${VERSION:-latest}
     restart: always
     env_file:
       - frontend/.env
@@ -16,7 +16,7 @@ services:
       start_period: 10s      
 
   backend:
-    image: ${DOCKERHUB_USERNAME:-mlorentedev}/mlorente-backend:${TAG:-latest}
+    image: ${DOCKERHUB_USERNAME:-mlorentedev}/mlorente-backend:${VERSION:-latest}
     restart: always
     env_file:
       - backend/.env
