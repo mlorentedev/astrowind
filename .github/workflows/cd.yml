@@ -44,7 +44,8 @@ jobs:
             elif [[ "${{ github.event.inputs.environment }}" == "production" ]]; then
               echo "version=latest" >> "$GITHUB_OUTPUT"
             else
-              echo "version=${{ secrets.VERSION }}" >> "$GITHUB_OUTPUT"
+              VERSION_FALLBACK="${{ secrets.VERSION || 'latest' }}"
+              echo "version=${VERSION_FALLBACK}" >> "$GITHUB_OUTPUT"
             fi
     
           # For repository_dispatch  
@@ -54,7 +55,8 @@ jobs:
             else
               echo "environment=staging" >> "$GITHUB_OUTPUT"
             fi
-            echo "version=${{ github.event.client_payload.version }}" >> "$GITHUB_OUTPUT"
+            VERSION_FALLBACK="${{ github.event.client_payload.version || 'latest' }}"
+            echo "version=${VERSION_FALLBACK}" >> "$GITHUB_OUTPUT"
     
           # For pull_request merged  
           else
@@ -66,14 +68,9 @@ jobs:
               echo "version=develop" >> "$GITHUB_OUTPUT"
             fi
           fi
-  
-      - name: Debug Outputs
-        run: |
-          echo "Environment: ${{ steps.set-env.outputs.environment }}"
-          echo "Version: ${{ steps.set-env.outputs.version }}"
 
   deploy:
-    name: Deploy to ${{ needs.prepare.outputs.environment }}
+    name: Deploy version ${{ needs.prepare.outputs.version }} to ${{ needs.prepare.outputs.environment }}
     needs: prepare
     runs-on: ubuntu-latest
     environment: ${{ needs.prepare.outputs.environment }}
