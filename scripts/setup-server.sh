@@ -207,6 +207,10 @@ fi
 echo "Configuring Docker socket permissions..."
 chmod 666 /var/run/docker.sock
 
+# Ensure user has access to SSL certificates
+chown -R \$DEPLOY_USER:docker /etc/letsencrypt
+chmod -R 755 /etc/letsencrypt
+
 # Create Docker configuration to ensure proper permissions
 mkdir -p /etc/docker
 cat > /etc/docker/daemon.json <<EOL

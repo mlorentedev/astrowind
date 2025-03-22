@@ -93,7 +93,6 @@ func loadDotEnvFile(paths []string) {
 			return
 		}
 	}
-	log.Warn().Msg("Could not load .env file from any location")
 }
 
 // populateConfig fills the configuration struct with environment variables
