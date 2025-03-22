@@ -156,6 +156,7 @@ jobs:
           cd "${DEPLOY_PATH}"
           export TAG="${VERSION}"
           export DOCKERHUB_USERNAME="$DOCKERHUB_USERNAME"
+          echo "Deployiing in ${DEPLOY_PATH} with tag ${TAG}"
           
           # Replace placeholders in Nginx configuration if needed
           if [ -f "${DEPLOY_PATH}/docker/nginx/conf.d/default.conf" ]; then
