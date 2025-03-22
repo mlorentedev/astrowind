@@ -128,6 +128,8 @@ fi
 # Configure permissions
 chown -R \$DEPLOY_USER:\$DEPLOY_USER /home/\$DEPLOY_USER/.ssh
 chmod 600 /home/\$DEPLOY_USER/.ssh/authorized_keys
+chown -R \$DEPLOY_USER:\$DEPLOY_USER \$INSTALL_DIR
+chmod -R 775 \$INSTALL_DIR
 
 # Configure Docker permissions for deployment user
 echo "Configuring Docker permissions for \$DEPLOY_USER user..."
@@ -149,6 +151,7 @@ mkdir -p \$INSTALL_DIR/docker/nginx/conf.d
 
 # Set appropriate permissions for installation directory
 chown -R \$DEPLOY_USER:docker \$INSTALL_DIR
+chown -R \$DEPLOY_USER:\$DEPLOY_USER \$INSTALL_DIR
 chmod -R 775 \$INSTALL_DIR
 
 # Create initial .env file

@@ -153,7 +153,7 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/mlorente-frontend:${{ needs.build.outputs.version }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/mlorente-frontend:${{ secrets.VERSION}}-${{ needs.build.outputs.sha_short }}     
+            ${{ secrets.DOCKERHUB_USERNAME }}/mlorente-frontend:${{ secrets.VERSION}}   
           platforms: linux/amd64,linux/arm64
           build-args: |
             BUILD_ARCH=amd64
@@ -166,7 +166,7 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKERHUB_USERNAME }}/mlorente-backend:${{ needs.build.outputs.version }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/mlorente-backend:${{ secrets.VERSION}}-${{ needs.build.outputs.sha_short }}     
+            ${{ secrets.DOCKERHUB_USERNAME }}/mlorente-backend:${{ secrets.VERSION}}
           platforms: linux/amd64,linux/arm64
           build-args: |
             BUILD_ARCH=amd64
