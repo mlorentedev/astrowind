@@ -78,6 +78,7 @@ Thumbs.db
 .cache_ggshield
 
 # Additional files
+certbot/
 backend/coverage.txt
 backend/coverage.html
 backend/bin

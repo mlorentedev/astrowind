@@ -66,6 +66,8 @@ jobs:
               echo "version=develop" >> $GITHUB_OUTPUT
             fi
           fi
+          echo "Environment: ${{ steps.set-env.outputs.environment }}"
+          echo "Version: ${{ steps.set-env.outputs.version }}"
 
   deploy:
     name: Deploy to ${{ needs.prepare.outputs.environment }}
