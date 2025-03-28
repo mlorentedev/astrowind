@@ -1,0 +1,20 @@
+---
+- name: Copy Nginx configuration
+  copy:
+    src: files/nginx/conf.d/default.conf
+    dest: "{{ deploy_dir }}/docker/nginx/conf.d/default.conf"
+    owner: deployer
+    group: deployer
+    mode: '0644'
+  notify: Restart Nginx container
+
+- name: Ensure certbot directories exist
+  file:
+    path: "{{ item }}"
+    state: directory
+    owner: deployer
+    group: deployer
+    mode: '0755'
+  with_items:
+    - "{{ deploy_dir }}/certbot/conf"
+    - "{{ deploy_dir }}/certbot/www"

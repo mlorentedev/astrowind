@@ -1,0 +1,33 @@
+---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400
+
+- name: Install required system packages
+  apt:
+    name:
+      - apt-transport-https
+      - ca-certificates
+      - curl
+      - software-properties-common
+      - python3-pip
+      - unzip
+      - git
+    state: present
+
+- name: Ensure deploy directory exists
+  file:
+    path: "{{ deploy_dir }}"
+    state: directory
+    owner: deployer
+    group: deployer
+    mode: '0755'
+
+- name: Ensure backup directory exists
+  file:
+    path: "{{ deploy_dir }}/backups"
+    state: directory
+    owner: deployer
+    group: deployer
+    mode: '0755'

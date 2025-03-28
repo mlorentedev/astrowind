@@ -1,0 +1,84 @@
+---
+- name: Create timestamp for backups
+  set_fact:
+    timestamp: "{{ ansible_date_time.year }}{{ ansible_date_time.month }}{{ ansible_date_time.day }}{{ ansible_date_time.hour }}{{ ansible_date_time.minute }}{{ ansible_date_time.second }}"
+
+- name: Create backup directory for this deployment
+  file:
+    path: "{{ deploy_dir }}/backups/{{ timestamp }}"
+    state: directory
+    owner: deployer
+    group: deployer
+    mode: '0755'
+
+- name: Backup current configuration
+  copy:
+    src: "{{ deploy_dir }}/{{ item }}"
+    dest: "{{ deploy_dir }}/backups/{{ timestamp }}/{{ item }}.backup"
+    remote_src: yes
+  with_items:
+    - .env
+    - docker-compose.yml
+  ignore_errors: true
+
+- name: Copy docker-compose.yml to server
+  template:
+    src: docker-compose.yml.j2
+    dest: "{{ deploy_dir }}/docker-compose.yml"
+    owner: deployer
+    group: deployer
+    mode: '0644'
+
+- name: Copy Nginx configuration files
+  copy:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: deployer
+    group: deployer
+    mode: '0644'
+  with_items:
+    - { src: 'files/nginx/conf.d/', dest: '{{ deploy_dir }}/docker/nginx/conf.d/' }
+
+- name: Generate .env file
+  template:
+    src: env.j2
+    dest: "{{ deploy_dir }}/.env"
+    owner: deployer
+    group: deployer
+    mode: '0644'
+
+- name: Set environment variables for deployment
+  set_fact:
+    docker_env:
+      TAG: "{{ tag_version | default('latest') }}"
+      DOCKERHUB_USERNAME: "{{ dockerhub_username | default('mlorentedev') }}"
+
+- name: Deploy with docker-compose
+  shell: |
+    cd {{ deploy_dir }}
+    export TAG={{ tag_version | default('latest') }}
+    export DOCKERHUB_USERNAME={{ dockerhub_username | default('mlorentedev') }}
+    docker-compose pull
+    docker-compose up -d
+  args:
+    chdir: "{{ deploy_dir }}"
+  environment: "{{ docker_env }}"
+
+- name: Verify deployment status
+  shell: |
+    cd {{ deploy_dir }}
+    docker-compose ps
+  args:
+    chdir: "{{ deploy_dir }}"
+  register: deployment_status
+
+- name: Display deployment status
+  debug:
+    var: deployment_status.stdout_lines
+
+- name: Clean up old Docker images
+  shell: |
+    docker image prune -af --filter "until=24h"
+  args:
+    chdir: "{{ deploy_dir }}"
+  ignore_errors: true

@@ -1,0 +1,22 @@
+---
+- name: Deploy mlorente.dev Application
+  hosts: webservers
+  become: true
+  vars:
+    tag_version: "{{ lookup('env', 'TAG_VERSION') | default('latest') }}"
+    dockerhub_username: "{{ lookup('env', 'DOCKERHUB_USERNAME') | default('mlorentedev') }}"
+    google_analytics_id: "{{ lookup('env', 'GOOGLE_ANALYTICS_ID') | default('') }}"
+
+  roles:
+    - common
+    - docker
+    - web
+    - deploy
+
+  handlers:
+    - name: Restart Nginx container
+      shell: |
+        cd {{ deploy_dir }}
+        docker-compose restart nginx
+      args:
+        chdir: "{{ deploy_dir }}"
